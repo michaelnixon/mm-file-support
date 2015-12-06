@@ -42,6 +42,7 @@ gem 'jquery-datatables-rails' #, github: 'rweng/jquery-datatables-rails'
 gem 'ajax-datatables-rails'
 gem 'kaminari'
 gem 'rubyzip'
+gem 'font-awesome-rails'
 
 group :development do
     gem 'railroady'

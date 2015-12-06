@@ -13,6 +13,7 @@
  *= require bootstrap-datepicker
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_tree .
+ *= require font-awesome
  */
 .stream_header {
 	background-color: lightblue;

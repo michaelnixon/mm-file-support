@@ -25,9 +25,9 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.includes(:owner, :sensor_types).search(params[:search]).order(:name)
     if current_user
-      @projects = @projects.select { |project| project.is_accessible_by?(@current_user) or project.public?}
+      @projects = @projects #.select { |project| project.is_accessible_by?(@current_user) or project.public?}
     else
-      @projects = @projects.select { |project| project.public? }
+      @projects = @projects #select { |project| project.public? }
     end    
   end
 
