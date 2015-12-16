@@ -12,12 +12,13 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
-<%= render 'layouts/flash_messages' %>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-9 col-md-12 col-lg-12">
-
-      <!--<div class="col-sm-12  col-md-12 main">-->
+    <!--<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">-->
+    <div class="col-sm-12  col-md-12 main">
+      <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
       <%= yield %>
     </div>
   </div>
