@@ -10,12 +10,22 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery.turbolinks
-//= require jquery_ujs
-//= require bootstrap.min
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require bootstrap-datepicker
-//= require turbolinks
-//= require_tree .
+
+//= require jquery/jquery-2.1.1.js
+//= require bootstrap-sprockets
+//= require metisMenu/jquery.metisMenu.js
+//= require pace/pace.min.js
+//= require peity/jquery.peity.min.js
+//= require slimscroll/jquery.slimscroll.min.js
+//= require inspinia.js
+
+// require jquery
+// require jquery.turbolinks
+// require jquery_ujs
+// require bootstrap.min
+// require dataTables/jquery.dataTables
+// require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+// require bootstrap-datepicker
+// require turbolinks
+// require_tree .
+

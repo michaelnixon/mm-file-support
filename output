@@ -1,0 +1,73 @@
+==  CreateUsers: migrating ====================================================
+-- create_table(:users)
+   -> 0.0038s
+==  CreateUsers: migrated (0.0039s) ===========================================
+
+==  CreateProjects: migrating =================================================
+-- create_table(:projects)
+   -> 0.0015s
+==  CreateProjects: migrated (0.0016s) ========================================
+
+==  CreateMovementStreams: migrating ==========================================
+-- create_table(:movement_streams)
+   -> 0.0017s
+==  CreateMovementStreams: migrated (0.0018s) =================================
+
+==  CreateMovementData: migrating =============================================
+-- create_table(:movement_data)
+   -> 0.0017s
+==  CreateMovementData: migrated (0.0018s) ====================================
+
+==  CreateMovementAnnotations: migrating ======================================
+-- create_table(:movement_annotations)
+   -> 0.0023s
+==  CreateMovementAnnotations: migrated (0.0025s) =============================
+
+==  CreateAssets: migrating ===================================================
+-- create_table(:assets)
+   -> 0.0016s
+==  CreateAssets: migrated (0.0017s) ==========================================
+
+==  AddAttachmentFileToAssets: migrating ======================================
+-- change_table(:assets)
+   -> 0.0041s
+==  AddAttachmentFileToAssets: migrated (0.0042s) =============================
+
+==  ActsAsTaggableOnMigration: migrating ======================================
+-- create_table(:tags)
+   -> 0.0014s
+-- create_table(:taggings)
+   -> 0.0013s
+-- add_index(:taggings, :tag_id)
+   -> 0.0009s
+-- add_index(:taggings, [:taggable_id, :taggable_type, :context])
+   -> 0.0011s
+==  ActsAsTaggableOnMigration: migrated (0.0051s) =============================
+
+==  AddMissingUniqueIndices: migrating ========================================
+-- add_index(:tags, :name, {:unique=>true})
+   -> 0.0012s
+-- remove_index(:taggings, :tag_id)
+   -> 0.0013s
+-- remove_index(:taggings, [:taggable_id, :taggable_type, :context])
+   -> 0.0010s
+-- add_index(:taggings, [:tag_id, :taggable_id, :taggable_type, :context, :tagger_id, :tagger_type], {:unique=>true, :name=>"taggings_idx"})
+   -> 0.0010s
+==  AddMissingUniqueIndices: migrated (0.0049s) ===============================
+
+==  RemoveRedundantNameFromAssets: migrating ==================================
+-- remove_column(:assets, :name, :string)
+   -> 0.0228s
+==  RemoveRedundantNameFromAssets: migrated (0.0230s) =========================
+
+==  UpdateTableNames: migrating ===============================================
+-- rename_table(:movement_data, :data_tracks)
+   -> 0.0021s
+-- rename_table(:movement_streams, :movement_groups)
+   -> 0.0016s
+==  UpdateTableNames: migrated (0.0040s) ======================================
+
+==  UpdateColumnNames: migrating ==============================================
+-- rename_column(:data_tracks, :movement_stream_id, :movement_group_id)
+   -> 0.0094s
+-- rename_column(:movement_annotations, :movement_datum_id, :data_track_id)

@@ -43,11 +43,12 @@ ActiveRecord::Schema.define(version: 20150528224208) do
 
   create_table "data_tracks", force: true do |t|
     t.string   "name"
-    t.text     "description", limit: 255
+    t.text     "description",        limit: 255
+    t.integer  "movement_stream_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "technician"
-    t.boolean  "public",                  default: false
+    t.boolean  "public",                         default: false
     t.integer  "user_id"
     t.date     "recorded_on"
     t.integer  "take_id"
@@ -67,11 +68,12 @@ ActiveRecord::Schema.define(version: 20150528224208) do
 
   create_table "movement_annotations", force: true do |t|
     t.string   "name"
-    t.text     "description",   limit: 255
+    t.text     "description",      limit: 255
     t.string   "format"
+    t.integer  "movement_data_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",                    default: false
+    t.boolean  "public",                       default: false
     t.integer  "user_id"
     t.integer  "attached_id"
     t.string   "attached_type"
@@ -142,6 +144,11 @@ ActiveRecord::Schema.define(version: 20150528224208) do
   create_table "projects_sensor_types", id: false, force: true do |t|
     t.integer "sensor_type_id", null: false
     t.integer "project_id",     null: false
+  end
+
+  create_table "projects_users", id: false, force: true do |t|
+    t.integer "user_id",    null: false
+    t.integer "project_id", null: false
   end
 
   create_table "sensor_types", force: true do |t|

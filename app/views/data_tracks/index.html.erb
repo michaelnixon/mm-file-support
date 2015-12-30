@@ -1,20 +1,103 @@
 <% provide(:title, 'Accessible Tracks') %>
-<h2>Tracks</h2>
 
-<table class="table table-striped table-bordered" id="tracks-table" data-source="<%= tracks_ajax_path(format: :json) %>">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Take</th>
-	  	<th>Sensors</th>
-			<th>Movers</th>
-	  	<th>Technician</th>
-			<th>Recording Date</th>	
-	  	<th class="nosort nosearch">Tags</th>
-    </tr>
-  </thead>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Tracks</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= url_for :controller => 'projects' %>">Home</a>
+      </li>
+      <li class="active">
+        <strong>Tracks</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Track Browser</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li>
+                <a href="#">Config option 1</a>
+              </li>
+              <li>
+                <a href="#">Config option 2</a>
+              </li>
+            </ul>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <table class="table table-striped table-bordered" id="tracks-table" data-source="<%= tracks_ajax_path(format: :json) %>">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Take</th>
+              <th>Sensors</th>
+              <th>Movers</th>
+              <th>Technician</th>
+              <th>Recording Date</th>
+              <th class="nosort nosearch">Tags</th>
+            </tr>
+            </thead>
 
-  <tbody>
-		
-  </tbody>
-</table>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :javascript do %>
+
+    <script type="text/javascript">
+//      $(function() {
+//        $('#tracks-table').dataTable({
+//        "processing": true,
+//        "serverSide": true,
+//        "bDeferRender": true,
+//        "bSortClasses": false,
+//        "ajax": $('#tracks-table').data('source'),
+//        "pagingType": "full_numbers",
+//          "sDom": '<"top">rt<"bottom"flp><"clear">',
+//        "columnDefs": [{
+//            "bSortable": false,
+//            "aTargets": ['nosort']
+//            }]
+//        });
+//      });
+
+      $(function() {
+
+        $('#tracks-table').dataTable({
+          "dom": 'T<"clear">lfrtip',
+          "processing": true,
+          "serverSide": true,
+          "bDeferRender": true,
+          "bSortClasses": false,
+          "ajax": $('#tracks-table').data('source'),
+          "tableTools": {
+            "sSwfPath": "../assets/dataTables/swf/copy_csv_xls_pdf.swf"
+          }
+        });
+      });
+    </script>
+<% end %>
