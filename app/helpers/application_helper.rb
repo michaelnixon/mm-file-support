@@ -56,6 +56,10 @@ module ApplicationHelper
     link_html("edit", text)
   end
 
+  def watch_link_html text = ''
+    link_html("play", text)
+  end
+
   def flash_class(level)
     case level.to_sym
       when :notice then "alert alert-info"

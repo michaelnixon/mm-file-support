@@ -1,109 +1,160 @@
 <% provide(:title, "Project: #{@project.name}") %>
-<ol class="breadcrumb">
-  <li><a href="/">Projects</a></li>
-	<li><%= link_to @project.name, project_path(@project) %></li>
-</ol>
-<h2><%= @project.name %><% if authorized? @project %> <small><%= link_to edit_link_html('Edit'), edit_project_path(@project) %></small><% end %></h2>
-<div class="row">
-  <div class="col-xs-6">
-		<% if authorized? @project %>
-			<p><span class="glyphicon glyphicon-exclamation-sign"></span> <em>Notice to owner: <% if @project.public? %>
-				 This project is visible to everyone.
-				 <% else %>
-				 This project can only be seen by its creator and approved access groups.
-				 <% end %></em>
-			</p>
-			<% if @project.any_not_public? %>
-			<p><span class="glyphicon glyphicon-exclamation-sign"></span> <em>You can send the entire project and its subsidiary elements <%= link_to "public", make_public_project_path(@project), method: :post, confirm: "Are you sure you want to make the whole project public?" %>.</em>
-		  </p>
-			<% end %>
-		<% end %>
-		<p>
-		  <%= @project.description %>
-		</p>
-		<h5>License terms</h5>
-		<p>
-			<%= @project.license %>
-			<% if @project.license.blank? %>
-			No terms specified. Assume regular copyright in effect.
-			<% end %>
-		</p>
-		<h5>Tags</h5>
-		<% if ! @project.tags.empty? -%>
-		  <p>
-		    <% @project.tags.each do |tag| %>
-		    	<%= link_to tag.name, tagged_url(:tag => tag.name) %>
-			<% end %>
-		  </p>
-		<% else -%>
-		 <p>No tags yet</p>
-		<% end -%>	
-	</div>
-	<div class="col-xs-6">
-		<% unless @project.movers.empty? %>
-		<h5>Default Movers</h5>
-		<ul class="horizontal-wrapped">
-			<% @project.movers.each do |mover| %>
-				<li><p>
-				<a href="<%= mover_url(mover) %>"><%= image_tag(mover.avatar.url(:thumb)) if mover.avatar? %><%= mover.name%></a>
-				</p></li>
-			<% end %>
-		</ul>
-		<% else %>
-		No default movers set.
-		<% end %>			
-	</div>
-</div>		
-<div class="row">
-  <div class="col-xs-6">
-		<%= link_to 'Mova!', mova_url + "project_id=#{@project.id}"%><br/>
-		<%= link_to link_html("download-alt", "Download this project"), controller: "projects", action: "export", id: @project.id unless @project.movement_groups.where(public: true).empty? %>	<br/>
-		Project owned by <%= mail_to(@project.owner.email, @project.owner.display_name) %><br/>
-		<%= image_tag(@project.owner.avatar.url(:thumb)) if @project.owner.avatar?%>
-	</div>
-	<div class="col-xs-6">
-		<h5>Attached Files</h5>
-		<% if current_user %>
-		<%= link_to link_html("glyphicon glyphicon-paperclip", "Attach a file"), new_movement_annotation_path(attached_id: @project.id, annotated: Project) %>
-		<% end %>		
-		<% unless @project.movement_annotations.empty? %>
-			<ul>
-				<% @project.movement_annotations.where(public: true).each do |annotation| %>
-					<li><%= link_to link_html("Download", annotation.asset.file_file_name), annotation.asset.file.url(:original, false) %> (<%= annotation.asset.file_content_type %>)
-						<% if authorized?(annotation) %>
-							<small><%= link_to edit_link_html("Edit"), edit_movement_annotation_path(annotation) %> 
-							<%= link_to remove_link_html("Delete"), annotation, method: :delete, data: { confirm: 'Are you sure?' } %></small>
-						<% end %>						
-						</li>
-				<% end %>
-				<% @project.movement_annotations.where(public:false ).each do |annotation| %>
-					<% if authorized?(annotation) %>
-						<li>
-							<%= link_to link_html("Download", annotation.asset.file_file_name), annotation.asset.file.url(:original, false) %> (<%= 		annotation.asset.file_content_type %>)						
-							<small><%= link_to edit_link_html("Edit"), edit_movement_annotation_path(annotation) %> 
-							<%= link_to remove_link_html("Delete"), annotation, method: :delete, data: { confirm: 'Are you sure?' } %></small>
-						</li>
-					<% end%>
-				<% end %>			
-			</ul>
-		<% end %>
-		<% if @project.movement_annotations.where(public: true).empty? %>
-			<p>No annotations available.</p>
-		<% end %>
-	</div>
-</div>
-<% if @project.movement_groups.empty? %>
-	<p>No associated movement groups yet. 
-		<% if authorized? @project %>
-			<small><%= link_to add_link_html("Add new group"), new_movement_group_path(project_id: @project.id) %></small>
-		<% end %>
-	</p>
-<% else %>
-	<% project_counter ||= 1%>
-	<h5>Movement Groups <small><%= link_to add_link_html("Add new group"), new_movement_group_path(project_id: @project.id) %></small></h5>
-	<div class="panel-group" id="accordion<%=project_counter%>">
-		<%= render partial: 'group', collection: @project.movement_groups.includes(:owner).order(:name).select {|g| g.public? or g.is_accessible_by?(current_user) } %>
-	</div>
-<% end %>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2><%= @project.name %><% if authorized? @project %> <small><%= link_to edit_link_html('Edit'), edit_project_path(@project) %></small><% end %></h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="/">Projects</a>
+      </li>
+      <li class="active">
+        <strong><%= link_to @project.name, project_path(@project) %></strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
 
-<%= link_to back_link_html('Return to list of projects'), projects_path %>
+  </div>
+</div>
+<!--<ol class="breadcrumb">-->
+  <!--<li><a href="/">Projects</a></li>-->
+	<!--<li><%= link_to @project.name, project_path(@project) %></li>-->
+<!--</ol>-->
+<!--<h2><%= @project.name %><% if authorized? @project %> <small><%= link_to edit_link_html('Edit'), edit_project_path(@project) %></small><% end %></h2>-->
+
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Movement Group Browser</h5>
+          <span class="padded-span">Project owned by <%= mail_to(@project.owner.email, @project.owner.display_name) %></span>
+          <div class="pull-right">
+          <span class="padded-span"><%= link_to link_html("download-alt", "Download this project"), controller: "projects", action: "export", id: @project.id unless @project.movement_groups.where(public: true).empty? %></span>
+          <span class="padded-span"><%= link_to add_link_html("Add new movement group"), new_movement_group_path(project_id: @project.id) %></span>
+          <span class="padded-span"><%= link_to watch_link_html('View in Mova!'), mova_url + "project_id=#{@project.id}"%></span>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-xs-6">
+              <% if authorized? @project %>
+                  <p><span class="glyphicon glyphicon-exclamation-sign"></span> <em>Notice to owner: <% if @project.public? %>
+                        This project is visible to everyone.
+                    <% else %>
+                        This project can only be seen by its creator and approved access groups.
+                    <% end %></em>
+                  </p>
+                  <% if @project.any_not_public? %>
+                      <p><span class="glyphicon glyphicon-exclamation-sign"></span> <em>You can send the entire project and its subsidiary elements <%= link_to "public", make_public_project_path(@project), method: :post, confirm: "Are you sure you want to make the whole project public?" %>.</em>
+                      </p>
+                  <% end %>
+              <% end %>
+              <p>
+                <%= @project.description %>
+              </p>
+              <h5>License terms</h5>
+              <p>
+                <%= @project.license %>
+                <% if @project.license.blank? %>
+                    No terms specified. Assume regular copyright in effect.
+                <% end %>
+              </p>
+              <h5>Tags</h5>
+              <% if ! @project.tags.empty? -%>
+                  <p>
+                    <% @project.tags.each do |tag| %>
+                        <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+                    <% end %>
+                  </p>
+              <% else -%>
+                  <p>No tags yet</p>
+              <% end -%>
+            </div>
+            <div class="col-xs-6">
+              <% unless @project.movers.empty? %>
+                  <h5>Default Movers</h5>
+                  <ul class="horizontal-wrapped">
+                    <% @project.movers.each do |mover| %>
+                        <li><p>
+                          <a href="<%= mover_url(mover) %>"><%= image_tag(mover.avatar.url(:thumb)) if mover.avatar? %><%= mover.name%></a>
+                        </p></li>
+                    <% end %>
+                  </ul>
+              <% else %>
+                  No default movers set.
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+            </div>
+            <div class="col-xs-6">
+              <h5>Attached Files</h5>
+              <% if current_user %>
+                  <%= link_to link_html("glyphicon glyphicon-paperclip", "Attach a file"), new_movement_annotation_path(attached_id: @project.id, annotated: Project) %>
+              <% end %>
+              <% unless @project.movement_annotations.empty? %>
+                  <ul>
+                    <% @project.movement_annotations.where(public: true).each do |annotation| %>
+                        <li><%= link_to link_html("Download", annotation.asset.file_file_name), annotation.asset.file.url(:original, false) %> (<%= annotation.asset.file_content_type %>)
+                          <% if authorized?(annotation) %>
+                              <small><%= link_to edit_link_html("Edit"), edit_movement_annotation_path(annotation) %>
+                                <%= link_to remove_link_html("Delete"), annotation, method: :delete, data: { confirm: 'Are you sure?' } %></small>
+                          <% end %>
+                        </li>
+                    <% end %>
+                    <% @project.movement_annotations.where(public:false ).each do |annotation| %>
+                        <% if authorized?(annotation) %>
+                            <li>
+                              <%= link_to link_html("Download", annotation.asset.file_file_name), annotation.asset.file.url(:original, false) %> (<%= 		annotation.asset.file_content_type %>)
+                              <small><%= link_to edit_link_html("Edit"), edit_movement_annotation_path(annotation) %>
+                                <%= link_to remove_link_html("Delete"), annotation, method: :delete, data: { confirm: 'Are you sure?' } %></small>
+                            </li>
+                        <% end%>
+                    <% end %>
+                  </ul>
+              <% end %>
+              <% if @project.movement_annotations.where(public: true).empty? %>
+                  <p>No annotations available.</p>
+              <% end %>
+            </div>
+          </div>
+          <% if @project.movement_groups.empty? %>
+              <p>No associated movement groups yet.
+              </p>
+          <% else %>
+              <% project_counter ||= 1%>
+              <div class="panel-group" id="accordion<%=project_counter%>">
+                <%= render partial: 'group', collection: @project.movement_groups.includes(:owner).order(:name).select {|g| g.public? or g.is_accessible_by?(current_user) } %>
+              </div>
+          <% end %>
+
+          <%= link_to back_link_html('Return to list of projects'), projects_path %>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

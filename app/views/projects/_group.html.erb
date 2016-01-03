@@ -5,8 +5,21 @@
     <h4 class="panel-title">
       <a data-toggle="collapse" data-parent="#accordion<%= project_counter  %>" href="#collapse<%=uniq_id%>" class="accordian-toggle">
         <%= group.name %> <span class="badge" style="background-color: #3a87ad;"><%= group.takes.count %></span> <i class="glyphicon glyphicon-collapse-down"></i></a>
-			<% if authorized? group %>
-			<small class="pull-right"><%= link_to edit_link_html("Edit"), edit_movement_group_path(group) %> <%= link_to remove_link_html("Delete"), group, method: :delete, data: { confirm: 'Are you sure?' } %></small>
+			<span class="padded-span pull-right"><%= link_to watch_link_html('View in Mova!'), mova_url + "group_id=#{group.id}"%></span>
+      <% if authorized? group %>
+      <div class="pull-right">
+        <span class="padded-span">
+          <!--<% if group.takes.empty? %>-->
+            <!--<span>No Takes attached yet</span>-->
+          <!--<% end %>-->
+          <% if authorized? group %>
+					<%= link_to add_link_html("Add new take"), new_take_path(movement_group_id: group.id) %>
+          <% end %>
+        </span>
+        <span class="padded-span"><%= link_to edit_link_html("Edit"), edit_movement_group_path(group) %> </span>
+        <span class="padded-span"><%= link_to remove_link_html("Delete"), group, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      </div>
+			<small class="pull-right"></small>
 			<% end %>
     </h4>
   </div>
@@ -27,18 +40,11 @@
 				</p>
 			<% end %>
 			<% if group.takes.empty? %>
-				<p>No takes attached yet. <% if authorized? group %>
-					<small><%= link_to add_link_html("Add new take"), new_take_path(movement_group_id: group.id) %></small></p>
-				<% end %></p>
+				<p>No takes attached yet.</p>
 			</div>
 			<% else %>
-				<%= link_to 'Mova!', mova_url + "group_id=#{group.id}"%>
-				<p><% if authorized? group %>
-					<small><%= link_to add_link_html("Add new take"), new_take_path(movement_group_id: group.id) %></small></p>
-				<% end %></p>				
 			</div>
 				<table class="table">
-				<caption>Takes</caption>
 				<thead>
 					<tr>
 						<th>Take name</th>

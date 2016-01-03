@@ -21,9 +21,11 @@ module ProjectsHelper
   
   def take_link_or_name(take)
     if take.is_accessible_by?(current_user) or take.public?
-      link_to(truncate(take.name, length: 20), take_path(take)) 
+      #link_to(truncate(take.name, length: 40), take_path(take))
+      link_to(take.name, take_path(take))
     else
-      truncate(take.name, length: 20)
+      take.name
+      #truncate(take.name, length: 40)
     end
   end  
   
