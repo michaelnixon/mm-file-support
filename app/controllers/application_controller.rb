@@ -103,6 +103,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def toast(type, text)
+  #   flash[:toastr] = { type => text }
+  # end
 
   private
   

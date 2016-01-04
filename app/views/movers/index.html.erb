@@ -1,41 +1,69 @@
 <% provide(:title, 'Movers') %>
-<h1>Listing movers</h1>
-<em>These individuals can be associated with data tracks for reference purposes.</em>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Expertise</th>
-      <th>CMA(-like) training</th>
-      <th>Other training</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @movers.each do |mover| %>
-      <tr>
-        <td>	<%= link_to edit_link_html, edit_mover_path(mover) if current_user %>
-							<%= link_to remove_link_html, mover, method: :delete, data: { confirm: 'Are you sure?' } if current_user %>
-							<%= link_to mover.name, mover_url(mover) %>
-				</td>
-        <td><%= Time.now.year - mover.dob.year unless mover.dob.nil? %></td>
-        <td><%= mover.gender %></td>
-        <td><%= mover.expertise %></td>
-        <td>
-				<% if mover.cma_like_training %>
-					<span class="glyphicon glyphicon-ok"></span>
-				<% else %>
-					<span class="glyphicon glyphicon-remove"></span>				
-				<% end %>
-				</td>
-        <td><%= mover.other_training %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Movers</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li class="active">
+        <strong>Movers List</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Movers List</h5>
+          <span class="padded-span">These individuals can be associated with data tracks for reference purposes.</span>
+          <div class="pull-right"><span class="padded-span"><%= link_to add_link_html('Add a new mover'), new_mover_path %></span></div>
+        </div>
+        <div class="ibox-content">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Expertise</th>
+              <th>CMA(-like) training</th>
+              <th>Other training</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
 
-<br>
-
-<%= link_to add_link_html('Add a new mover'), new_mover_path %>
+            <tbody>
+            <% @movers.each do |mover| %>
+                <tr>
+                  <td>
+                    <%= link_to mover.name, mover_url(mover) %>
+                  </td>
+                  <td><%= Time.now.year - mover.dob.year unless mover.dob.nil? %></td>
+                  <td><%= mover.gender %></td>
+                  <td><%= mover.expertise %></td>
+                  <td>
+                    <% if mover.cma_like_training %>
+                        <span class="glyphicon glyphicon-ok"></span>
+                    <% else %>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    <% end %>
+                  </td>
+                  <td><%= mover.other_training %></td>
+                  <td><span class="padded-span"><%= link_to edit_link_html, edit_mover_path(mover) if current_user %></span></td>
+                  <td><span class="padded-span"><%= link_to remove_link_html, mover, method: :delete, data: { confirm: 'Are you sure?' } if current_user %></span></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

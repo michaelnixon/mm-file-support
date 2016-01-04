@@ -1,6 +1,37 @@
 <% provide(:title, 'Editing Sensor') %>
-<h1>Editing sensor type</h1>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Edit Sensor Type</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li class="active">
+        <strong>Edit Sensor Type</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Edit an existing sensor type</h5>
+        </div>
+        <div class="ibox-content">
+          <%= render 'form' %>
 
-<%= render 'form' %>
+          <%= link_to back_link_html("Return to sensor listing"), sensor_types_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to back_link_html("Return to sensor listing"), sensor_types_path %>
+
+
+
+

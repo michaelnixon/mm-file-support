@@ -1,29 +1,57 @@
 <% provide(:title, 'Sensor Types') %>
-<h1>Sensor Types</h1>
-<em>These sensors are available for use in all new data tracks.</em>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @sensor_types.each do |sensor_type| %>
-      <tr>
-        <td><%= link_to edit_link_html, edit_sensor_type_path(sensor_type) if current_user %>
-						<%= link_to remove_link_html, sensor_type, method: :delete, data: { confirm: 'Are you sure?' } if current_user %>
-						<%= link_to sensor_type.name, sensor_type_path(sensor_type) %></td>
-        <td><%= sensor_type.description %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Sensor Types</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li class="active">
+        <strong>Add Data Track</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Types of Sensor</h5>
+          <span class="padded-span">These sensors are available for use in all new data tracks.</span>
+          <div class="pull-right">
+            <span class="padded-span"><%= link_to add_link_html("Create new sensor"), new_sensor_type_path if current_user %></span>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Edit</th>
+            </tr>
+            </thead>
 
-<br>
+            <tbody>
+            <% @sensor_types.each do |sensor_type| %>
+                <tr>
+                  <td><%= link_to sensor_type.name, sensor_type_path(sensor_type) %></td>
+                  <td><%= sensor_type.description %></td>
+                  <td><span class="padded-span"><%= link_to edit_link_html, edit_sensor_type_path(sensor_type) if current_user %></span>
+                    <span class="padded-span"><%= link_to remove_link_html, sensor_type, method: :delete, data: { confirm: 'Are you sure?' } if current_user %></span>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
 
-<%= link_to add_link_html("Create new sensor"), new_sensor_type_path if current_user %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
