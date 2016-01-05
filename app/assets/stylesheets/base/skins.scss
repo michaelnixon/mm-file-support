@@ -421,8 +421,8 @@ body.skin-3 {
 }
 
 .skin-3 .nav > li.active {
-
-  border-left: 4px solid #19aa8d
+  /*border-left: 4px solid #19aa8d*/
+  border-left: 4px solid darken($navy, 2%);
 }
 
 .skin-3 .nav-header {
