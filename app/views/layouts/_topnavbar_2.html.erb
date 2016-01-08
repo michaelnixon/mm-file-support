@@ -1,61 +1,77 @@
-<div class="row border-bottom white-bg">
+<div class="row white-bg">
     <nav class="navbar navbar-static-top" role="navigation">
-    <div class="navbar-header">
+    <div class="navbar-header col-lg-6">
         <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
             <i class="fa fa-reorder"></i>
         </button>
-        <a href="#" class="navbar-brand">Inspinia</a>
+        <a href="#" class="navbar-brand">MoDa</a>
     </div>
-    <div class="navbar-collapse collapse" id="navbar">
-        <ul class="nav navbar-nav">
-            <li class="active">
-                <a aria-expanded="false" role="button" href="<%= url_for :controller => 'layoutsoptions', :action => 'index' %>"> Back to main Layout page</a>
-        </li>
+    <div class="collapse navbar-collapse col-lg-6" id="navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 20px";>
         <li class="dropdown">
-            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
-            <ul role="menu" class="dropdown-menu">
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
-            <ul role="menu" class="dropdown-menu">
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
-            <ul role="menu" class="dropdown-menu">
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu item <span class="caret"></span></a>
-            <ul role="menu" class="dropdown-menu">
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-                <li><a href="">Menu item</a></li>
-            </ul>
+          <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Browse <span class="caret"></span></a>
+          <ul role="menu" class="dropdown-menu">
+            <li class="<%= is_active_controller('projects') %>">
+              <%= link_to projects_url do %>
+                  <span class="nav-label">Projects</span>
+              <% end %>
+            </li>
+            <li class="<%= is_active_controller('data_tracks') %>">
+              <%= link_to data_tracks_url do %>
+                  <span class="nav-label">Tracks</span>
+              <% end %>
+            </li>
+          </ul>
         </li>
 
-    </ul>
-    <ul class="nav navbar-top-links navbar-right">
-        <li>
-            <a href="#">
-                <i class="fa fa-sign-out"></i> Log out
-            </a>
+        <li class="<%= is_active_controller('pages') %>">
+        <li class="<%= is_active_action('about') %>">
+          <%= link_to pages_about_url do %>
+              <span class="nav-label">About</span>
+          <% end %>
         </li>
-    </ul>
+        <li class="<%= is_active_action('contact') %>">
+          <%= link_to pages_contact_url do %>
+              <span class="nav-label">Contact</span>
+          <% end %>
+        </li>
+        <li class="<%= is_active_action('howto') %>">
+          <%= link_to pages_howto_url do %>
+              <span class="nav-label">How To</span>
+          <% end %>
+        </li>
+        </li>
+        <li class="<%= is_active_controller('gallery') %>">
+        <li class="<%= is_active_action('basic_gallery') %>">
+          <%= link_to  gallery_basic_gallery_path do %>
+              <span class="nav-label">FAQs</span>
+          <% end %>
+        </li>
+        </li>
+        <% if current_user %>
+            <li class="dropdown">
+              <a href="" dropdown="" data-toggle="dropdown" class="dropdown-toggle">
+                <span class="glyphicon glyphicon-user"></span> <%= current_user.email %> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to 'Create new project', new_project_path %></li>
+                <li><%= link_to 'View my projects', myprojects_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to 'Manage sensors', sensor_types_path %></li>
+                <li><%= link_to 'Manage movers',  movers_path %></li>
+                <li><%= link_to 'Manage access groups',  access_groups_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Create new user account", new_user_path %></li>
+                <li><%= link_to "Edit my profile", edit_user_path(current_user) %></li>
+                <li><%= link_to "Logout", log_out_path %></li>
+              </ul>
+            </li>
+        <% else %>
+            <li class="dropdown">
+              <%= link_to login_link_html("Login"), log_in_path %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 </div>
-        </nav>
-        </div>

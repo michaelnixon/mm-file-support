@@ -2,7 +2,7 @@ body {
   font-family: $font-stack;
   background-color: #2f4050;
   font-size: 13px;
-  color: $text-color;
+  color: black;
   overflow-x: hidden;
 }
 
@@ -36,6 +36,16 @@ body.boxed-layout #wrapper {
 a {
   cursor: pointer;
 }
+.underlined{
+  color:black;
+  border-bottom: 1px dotted #000;
+  text-decoration: none;
+}
+.gray-underlined{
+  color:#888888;
+  border-bottom: 1px dotted #000;
+  text-decoration: none;
+}
 
 a:hover, a:focus {
   text-decoration: none;
@@ -44,6 +54,23 @@ a:hover, a:focus {
 .border-bottom {
   border-bottom: 1px solid $border-color !important;
 }
+
+.border-bottom-mg-bt {
+  border-bottom: 1px solid $border-color !important;
+  margin-bottom: 60px;
+}
+
+.border-bottom-mg-bt-top {
+  border-bottom: 1px solid $border-color !important;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+//
+//.dataTable{
+//  color:#888888;
+//  border-bottom: 1px dotted #000;
+//  text-decoration: none;
+//}
 
 .font-bold {
   font-weight: 600;

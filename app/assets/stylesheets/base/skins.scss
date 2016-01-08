@@ -369,7 +369,7 @@ body.boxed-layout.skin-3 #wrapper {
 }
 
 .skin-3 .nav > li.active {
-  background: darken($skin-3-nav-bg, 2%);
+  //background: darken($skin-3-nav-bg, 2%);
 }
 
 .fixed-nav.skin-3 .navbar-fixed-top {
@@ -377,11 +377,11 @@ body.boxed-layout.skin-3 #wrapper {
 }
 
 .skin-3 .nav > li > a {
-  color: $skin-3-a-color;
+  color: black;
 }
 
 .skin-3 .nav > li.active > a {
-  color: white;
+  color: red;
 }
 
 .skin-3 .navbar-minimalize {
@@ -409,11 +409,11 @@ body.skin-3 {
 }
 
 .skin-3 #page-wrapper {
-  background: $skin-3-page-bg;
+  background: white ;
 }
 
 .skin-3 .ibox-title, .skin-3 .ibox-content {
-  border-width: 1px;
+  border-width: 0px;
 }
 
 .skin-3 .ibox-content:last-child {
@@ -422,7 +422,7 @@ body.skin-3 {
 
 .skin-3 .nav > li.active {
   /*border-left: 4px solid #19aa8d*/
-  border-left: 4px solid darken($navy, 2%);
+  //border-left: 4px solid darken($navy, 2%);
 }
 
 .skin-3 .nav-header {

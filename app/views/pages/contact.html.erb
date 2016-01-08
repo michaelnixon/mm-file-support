@@ -1,7 +1,7 @@
 <% provide(:title, "Contact Us") %>
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper white-bg page-heading">
   <div class="col-lg-10">
-    <h2>Contact Us</h2>
+    <h1>Contact</h1>
     <ol class="breadcrumb">
       <li>
         <a href="<%= url_for :controller => 'projects' %>">Home</a>
@@ -18,11 +18,15 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
-        <div class="ibox-title">
-          <h5>Contact Us</h5>
-        </div>
-        <div class="ibox-content">
-          <p>This site is under active development by <%= mail_to "michael_nixon@sfu.ca", "Michael Nixon"%> and <%= mail_to "sranjan@sfu.ca", "Subir Ranjan"%> at Simon Fraser University, Canada, so please contact them with any technical difficulties you encounter. For more information on movement research, please visit <%= link_to "Moving Stories", "http://movingstories.ca" %>. For more information on the infrastructure development, please visit <%= link_to "mplusm", "http://mplusm.ca"%>.</p>
+        <div class="row ibox-content">
+          <div class="col-lg-12">
+          <p>An SFU Moving Stories Project</p>
+          </div>
+          <div class="col-lg-12 border-bottom-mg-bt-top">
+          </div>
+          <div class="col-lg-6 pull-right">
+            <p>This site is under active development by <%= mail_to "michael_nixon@sfu.ca", "Michael Nixon","class='underlined'":String%> and <%= mail_to "sranjan@sfu.ca", "Subir Ranjan","class='underlined'":String%> at Simon Fraser University, Canada, so please contact them with any technical difficulties you encounter. For more information on movement research, please visit <%= link_to "Moving Stories", "http://movingstories.ca","class='underlined'":String %>. For more information on the infrastructure development, please visit <%= link_to "mplusm", "http://mplusm.ca","class='underlined'":String%>.</p>
+          </div>
         </div>
       </div>
     </div>

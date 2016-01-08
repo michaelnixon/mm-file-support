@@ -18,7 +18,7 @@ class DataTrackDatatable < AjaxDatatablesRails::Base
       [
         # comma separated list of the values for each cell of a table row
         # example: record.attribute,
-        link_to(truncate(record.name, length: 40), data_track_path(record)), record.take.try(:name), record.sensor_types.map{|type| link_to(type.name, sensor_type_path(type)) }.join(", "), record.movers.map{|mover| link_to(mover.name, mover_path(mover)) }.join(", "),
+        link_to(truncate(record.name, length: 40), data_track_path(record),"class='underlined'":String), record.take.try(:name), record.sensor_types.map{|type| link_to(type.name, sensor_type_path(type),"class='underlined'":String) }.join(", "), record.movers.map{|mover| link_to(mover.name, mover_path(mover),"class='underlined'":String) }.join(", "),
           record.technician, record.recorded_on, record.tag_list        
       ]
     end

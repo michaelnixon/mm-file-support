@@ -18,7 +18,7 @@
 
 
 </head>
-<body class="skin-3 mini-navbar">
+<body class="skin-3">
 
 <!-- Skin configuration box -->
 <%= render 'layouts/skinconfig' %>
@@ -27,13 +27,12 @@
     <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
 
         <!-- Navigation -->
-        <%= render 'layouts/navigation' %>
 
         <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg <%= @extra_class %>" style="margin-bottom: 69px;">
+        <div id="page-wrapper" class="white-bg <%= @extra_class %>" style="margin-bottom: 69px;">
 
             <!-- Page wrapper -->
-            <%= render 'layouts/topnavbar' %>
+            <%= render 'layouts/topnavbar_2' %>
             <% unless flash.empty? %>
                 <script type="text/javascript">
                   <% flash.each do |f| %>
