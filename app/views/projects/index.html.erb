@@ -36,19 +36,19 @@
                 <tr>
                   <!--<td><%= link_to truncate(project.name, length: 40), project_path(project) %> <%= render partial: "owner_options", locals: { project: project} if authorized?(project)%></td>-->
                   <td><% if project.public? %>
-                        <%= link_to project.name, project_path(project), "class='underlined'":String%>
+                        <%= link_to project.name, project_path(project), class:"underlined"%>
                         <%= render partial: "owner_options", locals: { project: project} if authorized?(project)%></td>
                     <% else %>
                         <% if authorized?(project) %>
-                            <%= link_to project.name, project_path(project),"class='underlined'":String %>
+                            <%= link_to project.name, project_path(project),class:"underlined" %>
                             <%= render partial: "owner_options", locals: { project: project} if authorized?(project)%></td>
                         <%else%>
                             <%= project.name %>
                         <%end%>
                     <% end %>
                     <td><%= raw(project.movement_groups.includes(:owner).map{|group| group_link_or_name(group) }.join(", "))%></td>
-                    <td><%= raw(project.sensor_types.map{|type| link_to(type.name, sensor_type_path(type),"class='underlined'":String) }.join(", "))%></td>
-                    <td><%= raw(project.all_movers.map{|mover| link_to(mover.name, mover_path(mover),"class='underlined'":String) }.join(", "))%></td>
+                    <td><%= raw(project.sensor_types.map{|type| link_to(type.name, sensor_type_path(type),class:"underlined") }.join(", "))%></td>
+                    <td><%= raw(project.all_movers.map{|mover| link_to(mover.name, mover_path(mover),class:"underlined") }.join(", "))%></td>
                     <td><%= project.tag_list %></td>
                     <td><% if project.public? %>
                           <i class="fa fa-unlock fa-2x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i>
