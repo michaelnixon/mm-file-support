@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ed258e4-2b44-45a0-8620-a526036bac9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/projects_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/projects_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/datatables/data_track_datatable.rb" afterPath="$PROJECT_DIR$/app/datatables/data_track_datatable.rb" />
     </list>
     <ignored path="mm-file-support.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,16 +97,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_navbar.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.0.0/assets/stylesheets/bootstrap/_navbar.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.0">
-              <caret line="386" column="5" selection-start-line="386" selection-start-column="5" selection-end-line="386" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="base.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/base/base.scss">
           <provider selected="true" editor-type-id="text-editor">
@@ -117,10 +107,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="projects_helper.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="projects_helper.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/helpers/projects_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7463175">
+            <state vertical-scroll-proportion="0.0">
               <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
               <folding />
             </state>
@@ -132,6 +122,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="17.4">
               <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data_track_datatable.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/datatables/data_track_datatable.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7643208">
+              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -193,7 +193,6 @@
         <option value="$PROJECT_DIR$/app/views/layouts/_navigation.html.erb" />
         <option value="$PROJECT_DIR$/app/views/data_tracks/index.json.jbuilder" />
         <option value="$PROJECT_DIR$/app/views/data_tracks/show.json.jbuilder" />
-        <option value="$PROJECT_DIR$/app/datatables/data_track_datatable.rb" />
         <option value="$PROJECT_DIR$/app/views/data_tracks/index.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/base/custom.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/base/navigation.scss" />
@@ -203,6 +202,7 @@
         <option value="$PROJECT_DIR$/app/views/pages/about.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/base/base.scss" />
         <option value="$PROJECT_DIR$/app/helpers/projects_helper.rb" />
+        <option value="$PROJECT_DIR$/app/datatables/data_track_datatable.rb" />
       </list>
     </option>
   </component>
@@ -1354,14 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/datatables/data_track_datatable.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-27.636364">
@@ -1462,8 +1454,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/projects_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7463175">
+        <state vertical-scroll-proportion="0.0">
           <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/datatables/data_track_datatable.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7643208">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
           <folding />
         </state>
       </provider>
