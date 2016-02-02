@@ -9,7 +9,7 @@
     </div>
     <div class="collapse navbar-collapse col-lg-6" id="navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right" style="margin-right: 20px";>
-        <li class="dropdown">
+        <li class="dropdown <%= is_active_controller('projects') %> <%= is_active_controller('data_tracks') %>">
           <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Browse <span class="caret"></span></a>
           <ul role="menu" class="dropdown-menu">
             <li class="<%= is_active_controller('projects') %>">
@@ -36,19 +36,28 @@
               <span class="nav-label">Contact</span>
           <% end %>
         </li>
-        <li class="<%= is_active_action('howto') %>">
-          <%= link_to pages_howto_url do %>
-              <span class="nav-label">How To</span>
-          <% end %>
+
+        <li class="dropdown <%= is_active_action('howto') %> <%= is_active_controller('gallery') %>">
+          <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Help <span class="caret"></span></a>
+          <ul role="menu" class="dropdown-menu">
+            <li class="<%= is_active_action('howto') %>">
+              <%= link_to pages_howto_url do %>
+                  <span class="nav-label">How To</span>
+              <% end %>
+            </li>
+            </li>
+            <li class="<%= is_active_controller('gallery') %>">
+            <li class="<%= is_active_action('basic_gallery') %>">
+              <%= link_to  gallery_basic_gallery_path do %>
+                  <span class="nav-label">FAQs</span>
+              <% end %>
+            </li>
+            </li>
+          </ul>
         </li>
-        </li>
-        <li class="<%= is_active_controller('gallery') %>">
-        <li class="<%= is_active_action('basic_gallery') %>">
-          <%= link_to  gallery_basic_gallery_path do %>
-              <span class="nav-label">FAQs</span>
-          <% end %>
-        </li>
-        </li>
+
+
+
         <% if current_user %>
             <li class="dropdown">
               <a href="" dropdown="" data-toggle="dropdown" class="dropdown-toggle">
