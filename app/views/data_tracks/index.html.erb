@@ -1,8 +1,9 @@
 <% provide(:title, 'Accessible Tracks') %>
 
 <div class="row wrapper white-bg page-heading">
-  <div class="col-lg-10">
+  <div class="col-lg-12">
     <h1>Track Browser</h1>
+    <input type="text" class="pull-right col-lg-2" id="myInputTextField" placeholder="Search">
     <ol class="breadcrumb">
       <li>
         <a href="<%= url_for :controller => 'projects' %>">Home</a>
@@ -65,7 +66,8 @@
 
       $(function() {
 
-        $('#tracks-table').dataTable({
+        oTable=$('#tracks-table').dataTable({
+          "bFilter":true,
           "processing": true,
           "serverSide": true,
           "bDeferRender": true,
@@ -73,5 +75,10 @@
           "ajax": $('#tracks-table').data('source'),
         });
       });
+
+      $('#myInputTextField').keyup(function(){
+        oTable.search($(this).val()).draw() ;
+      })
+
     </script>
 <% end %>
