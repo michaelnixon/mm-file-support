@@ -3,7 +3,11 @@
 <div class="row wrapper white-bg page-heading">
   <div class="col-lg-12">
     <h1>Track Browser</h1>
+
+    <button type="button" id="search_data_tracks" class="pull-right">Go</button>
+    <button type="button" id="clear_search_data_tracks" class="pull-right" style="display: none">Clear</button>
     <input type="text" class="pull-right col-lg-2" id="myInputTextField" placeholder="Search">
+
     <ol class="breadcrumb">
       <li>
         <a href="<%= url_for :controller => 'projects' %>">Home</a>
@@ -65,8 +69,7 @@
 //      });
 
       $(function() {
-
-        oTable=$('#tracks-table').dataTable({
+        oTable=$('#tracks-table').DataTable({
           "bFilter":true,
           "processing": true,
           "serverSide": true,
@@ -74,11 +77,19 @@
           "bSortClasses": false,
           "ajax": $('#tracks-table').data('source'),
         });
+
+        $('#search_data_tracks').click(function(){
+          oTable.search($('#myInputTextField').val()).draw() ;
+          $('#search_data_tracks').hide();
+          $('#clear_search_data_tracks').show();
+        })
+
+        $('#clear_search_data_tracks').click(function(){
+          oTable.search('').draw();
+          $('#myInputTextField').val('');
+          $('#clear_search_data_tracks').hide();
+          $('#search_data_tracks').show();
+        })
       });
-
-      $('#myInputTextField').keyup(function(){
-        oTable.search($(this).val()).draw() ;
-      })
-
     </script>
 <% end %>
