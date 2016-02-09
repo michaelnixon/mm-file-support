@@ -1,65 +1,77 @@
-<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-        <h2>Frequently Asked Questions</h2>
-        <ol class="breadcrumb">
-            <li>
-              <a href="<%= url_for :controller => 'projects' %>">Home</a>
-            </li>
-            <li class="active">
-                <strong>FAQs</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-lg-2">
-
-    </div>
+<% provide(:title, "About") %>
+<div class="row wrapper white-bg page-heading">
+  <div class="col-lg-10">
+    <h1>Frequently Asked Questions</h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= url_for :controller => 'projects' %>">Home</a>
+      </li>
+      <li class="active">
+        <strong>FAQs</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
 </div>
 
 
-
-
-<div class="wrapper wrapper-content ">
+<div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
-        <div class="ibox-title">
-          <h5>What are the models behind the database?</h5>
-        </div>
-        <div class="ibox-content">
-          <div class="pull-left col-lg-10">
-            <p>
-              Please click on the image in the right to see the <strong>database diagram</strong> of Movement Database.
-            </p>
-            <!--<a href=="<%= image_path('gallery/models.png') %>" target="_blank">Click to download</a>-->
-
+        <div class="row ibox-content">
+          <div class="col-lg-12">
+            <p class="p-gray"><b>Questions and Answers</b></p>
           </div>
+          <div class="col-lg-12 border-bottom-mg-bt-top">
+          </div>
+          <div class="col-lg-6 pull-right">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                  <div class="ibox-title">
+                    <h5>What are the models behind the database?</h5>
+                  </div>
+                  <div class="ibox-content">
+                    <div class="pull-left col-lg-10">
+                      <p>
+                        Please click on the image in the right to see the <strong>database diagram</strong> of Movement Database.
+                      </p>
+                      <!--<a href=="<%= image_path('gallery/models.png') %>" target="_blank">Click to download</a>-->
 
-          <div class="lightBoxGallery">
-            <a href="<%= image_path('gallery/models.png') %>" title="Model of the Database" data-gallery=""><img src="<%= image_path('gallery/models_small.png') %>"></a>
-            <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
-            <div id="blueimp-gallery" class="blueimp-gallery">
-              <div class="slides"></div>
-              <h3 class="title"></h3>
-              <a class="prev">‹</a>
-              <a class="next">›</a>
-              <a class="close">×</a>
-              <a class="play-pause"></a>
-              <ol class="indicator"></ol>
+                    </div>
+
+                    <div class="lightBoxGallery">
+                      <a href="<%= image_path('gallery/models.png') %>" title="Model of the Database" data-gallery=""><img src="<%= image_path('gallery/models_small.png') %>"></a>
+                      <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+                      <div id="blueimp-gallery" class="blueimp-gallery">
+                        <div class="slides"></div>
+                        <h3 class="title"></h3>
+                        <a class="prev">‹</a>
+                        <a class="next">›</a>
+                        <a class="close">×</a>
+                        <a class="play-pause"></a>
+                        <ol class="indicator"></ol>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ibox-title clearfix">
+                    <h5>What is the maximum size of a file that can be uploaded and downloaded?</h5>
+                  </div>
+                  <div class="ibox-content">
+                    <div class="pull-left col-lg-10">
+                      <p>
+                        You can upload 2 GB at a time.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="ibox-title clearfix">
-          <h5>What is the maximum size of a file that can be uploaded and downloaded?</h5>
-        </div>
-        <div class="ibox-content">
-          <div class="pull-left col-lg-10">
-            <p>
-              You can upload 2 GB at a time.
-            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
