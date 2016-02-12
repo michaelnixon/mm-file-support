@@ -41,5 +41,60 @@
 // Your custom style to override base style
 @import "base/custom";
 
+/*
+ *  Usage:
+ *
+ *    <div class="sk-spinner sk-spinner-three-bounce">
+ *      <div class="sk-bounce1"></div>
+ *      <div class="sk-bounce2"></div>
+ *      <div class="sk-bounce3"></div>
+ *    </div>
+ *
+ */
 
-
+.spiner-example {
+  height: 200px;
+  padding-top: 70px;
+}
+/*
+ *  Usage:
+ *
+ *    <div class="sk-spinner sk-spinner-rotating-plane"></div>
+ *
+ */
+.sk-spinner-rotating-plane.sk-spinner {
+  width: 30px;
+  height: 30px;
+  background-color: #1ab394;
+  margin: 0 auto;
+  -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+  animation: sk-rotatePlane 1.2s infinite ease-in-out;
+}
+@-webkit-keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+@keyframes sk-rotatePlane {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}

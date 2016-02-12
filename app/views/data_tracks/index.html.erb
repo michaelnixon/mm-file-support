@@ -20,11 +20,15 @@
   <div class="col-lg-2">
   </div>
 </div>
+
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
     <div class="">
       <div class="ibox float-e-margins">
         <div class="ibox-content">
+          <div id="loader" class="spiner-example">
+            <div class="sk-spinner sk-spinner-rotating-plane"></div>
+          </div>
           <table class="table table-hover" id="tracks-table" data-source="<%= tracks_ajax_path(format: :json) %>">
             <thead>
             <tr>
@@ -37,9 +41,7 @@
               <th class="nosort nosearch">Tags</th>
             </tr>
             </thead>
-
             <tbody>
-
             </tbody>
           </table>
         </div>
@@ -68,8 +70,25 @@
 //        });
 //      });
 
+      var showMessage=function(){
+        $("#loader").show();
+        $(".table").hide();
+      };
+      var hideOverlay=function(){
+        $("#loader").hide()
+        $(".table").show();
+      };
       $(function() {
         oTable=$('#tracks-table').DataTable({
+          "fnPreDrawCallback": function() {
+            // gather info to compose a message
+            showMessage();
+            return true;
+          },
+          "fnDrawCallback": function() {
+            // in case your overlay needs to be put away automatically you can put it here
+            hideOverlay();
+          },
           "bFilter":true,
           "language": {
             "lengthMenu": "Show  _MENU_  entries",
@@ -78,7 +97,7 @@
             "infoEmpty": "No records available",
             "infoFiltered": "(filtered from _MAX_ total records)"
           },
-          "processing": true,
+          "processing": false,
           "serverSide": true,
           "bDeferRender": true,
           "bSortClasses": false,
@@ -90,6 +109,7 @@
           $('#search_data_tracks').hide();
           $('#clear_search_data_tracks').show();
         })
+
 
         $('#clear_search_data_tracks').click(function(){
           oTable.search('').draw();
