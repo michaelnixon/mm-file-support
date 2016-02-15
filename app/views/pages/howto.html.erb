@@ -39,48 +39,125 @@
               authentication is required for all access, unlike the public browsing available on this web site.</p>
           </div>
           <div class="col-lg-6 pull-right">
-            <h3>Contributing Data</h3>
-            <p>If you wish to contribute data, please contact an existing user for an account, or the <%= mail_to "michael_nixon@sfu.ca", "site administrator"%> if you don't know any one.</p>
-            <%= image_tag(image_path("sample_menu.png"), :class => "floater")%>
-            <h4>How to add data</h4>
-            To add data to MoDa, you'll need to add each piece of the hierarchy in turn.
-            <ol>
-              <li><%= link_to "Login", "http://moda.movingstories.ca/log_in"%>. </li>
-              <li>Select your email address to activate the dropdown menu. </li>
-              <li>Choose "Create new project" (first item).</li>
-              <li>Fill in the fields, including name, and description.
+            <!---->
+              <div class="">
+                <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h5 class="panel-title">
+                        <i class="fa fa-chevron-down"></i>
+                        <a class="underlined" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><b>Contributing Data</b></a>
+                      </h5>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                        <p>If you wish to contribute data, please contact an existing user for an account, or the <%= mail_to "michael_nixon@sfu.ca", "site administrator"%> if you don't know any one.</p>
+                        <%= image_tag(image_path("sample_menu.png"), :class => "floater")%>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-chevron-right"></i>
+                        <a class="underlined" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><b>How to add data</b></a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        To add data to MoDa, you'll need to add each piece of the hierarchy in turn.
+                        <ol>
+                          <li><%= link_to "Login", "http://moda.movingstories.ca/log_in"%>. </li>
+                          <li>Select your email address to activate the dropdown menu. </li>
+                          <li>Choose "Create new project" (first item).</li>
+                          <li>Fill in the fields, including name, and description.
 
-                <p>For fields like Movers and Sensor types, make sure you use the appropriate keyboard commands for your OS to select as many names as appropriate. If the Movers or Sensor types don’t exist yet, use "Manage sensors" or "Manage movers" from the menu BEFORE.</p>
+                            <p>For fields like Movers and Sensor types, make sure you use the appropriate keyboard commands for your OS to select as many names as appropriate. If the Movers or Sensor types don’t exist yet, use "Manage sensors" or "Manage movers" from the menu BEFORE.</p>
 
-                <p>Entering the Movers and Sensor Types here provides the default for new objects that are created, and can be overridden later on. So, for example, Mary and Joe could be the movers for your project, while one Take may record Mary and another Take may record Joe.</p>
+                            <p>Entering the Movers and Sensor Types here provides the default for new objects that are created, and can be overridden later on. So, for example, Mary and Joe could be the movers for your project, while one Take may record Mary and another Take may record Joe.</p>
 
-                <p>Paste the appropriate licensing text into the License field.
-                  The Tags field allow for freeform tags to be added – separate these with commas, not spaces. Finally, the Public checkbox "publishes" the project for everyone to see.</p>
-              </li>
-              <li>Click the Create Project button and your project is complete!</li>
-            </ol>
-            <h4>Adding new Movement Groups and Takes</h4>
-            <p>These two subsidiary organizational units are added from their parent element. So, to add a new Movement Group, click "Add new group" from the project page. To add a new take, click "Add new take" from the Movement Group page (once created). Using this layered hierarchy is mandatory, although if your work treats Movement Groups and Takes as the same, you can simply have a "meaningless" empty Movement Group to hold the take. This is similar to how you use meaningless <em>div</em> elements in html simply to hold other things.</p>
-            <h4>Adding new Data Tracks</h4>
-            <p>Data Tracks are records responsible for holding all information about actual movement capture files. You start a new entry by clicking "Add new data track" from the appropriate Take page.</p>
+                            <p>Paste the appropriate licensing text into the License field.
+                              The Tags field allow for freeform tags to be added – separate these with commas, not spaces. Finally, the Public checkbox "publishes" the project for everyone to see.</p>
+                          </li>
+                          <li>Click the Create Project button and your project is complete!</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-chevron-right"></i>
+                        <a class="underlined" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><b>Adding new Movement Groups and Takes</b></a>
+                      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>These two subsidiary organizational units are added from their parent element. So, to add a new Movement Group, click "Add new group" from the project page. To add a new take, click "Add new take" from the Movement Group page (once created). Using this layered hierarchy is mandatory, although if your work treats Movement Groups and Takes as the same, you can simply have a "meaningless" empty Movement Group to hold the take. This is similar to how you use meaningless <em>div</em> elements in html simply to hold other things.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-chevron-right"></i>
+                        <a class="underlined" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><b>Adding new Data Tracks</b></a>
+                      </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>Data Tracks are records responsible for holding all information about actual movement capture files. You start a new entry by clicking "Add new data track" from the appropriate Take page.</p>
 
-            <p>As with the other elements, you can enter a name and description. You also have the option to designate the Technician who handled the recording, the date the information was recorded on, the Movers, the Sensor Types, freeform Tags. Finally, you have the choice to immediately make the data track available to the public using the Public checkbox.</p>
+                        <p>As with the other elements, you can enter a name and description. You also have the option to designate the Technician who handled the recording, the date the information was recorded on, the Movers, the Sensor Types, freeform Tags. Finally, you have the choice to immediately make the data track available to the public using the Public checkbox.</p>
 
-            <p>Don’t forget to use the Asset file 'Browse' button to actually choose your file, too!</p>
-            <h4>Controlling who can edit your work</h4>
-            <p>In MoDa, only creators normally have the ability to edit any information throughout the hierarchy of elements. However, you can use an "Access Group" to add additional editors. Click "Manage access groups" on the menu, and you will have the ability to create and edit your access groups. An access group is simply a mapping between a project and a list of users who will be permitted to edit it. </p>
+                        <p>Don’t forget to use the Asset file 'Browse' button to actually choose your file, too!</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-chevron-right"></i>
+                        <a class="underlined" data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><b>Controlling who can edit your work</b></a>
+                      </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>In MoDa, only creators normally have the ability to edit any information throughout the hierarchy of elements. However, you can use an "Access Group" to add additional editors. Click "Manage access groups" on the menu, and you will have the ability to create and edit your access groups. An access group is simply a mapping between a project and a list of users who will be permitted to edit it. </p>
 
-            <p>The only exception to this is that any logged in user may add annotations (uploaded files) to your work. This is to facilitate data sharing and the creation of supplementary knowledge without requiring everyone be added to an Access Group.</p>
+                        <p>The only exception to this is that any logged in user may add annotations (uploaded files) to your work. This is to facilitate data sharing and the creation of supplementary knowledge without requiring everyone be added to an Access Group.</p>
 
-            <p>As per above, whether the public (non-logged in viewers and logged in viewers without Access Group Rights) can see your work is controlled by the Public checkbox.</p>
+                        <p>As per above, whether the public (non-logged in viewers and logged in viewers without Access Group Rights) can see your work is controlled by the Public checkbox.</p>
 
-            <h4>Batch Adding Existing Caches of Movement Data</h4>
-            <p>We have a process that allows us to add existing files all at once without using the web interface. This process requires:</p>
-            <ol>
-              <li>You fill out a spreadsheet, one row per file to specify all required info described above (a blank spreadsheet with the appropriate headers will be supplied, as well as some utility scripts to automate the data gathering)</li>
-              <li>all the data files are transferred across to our servers (e.g. scp from a network drive)</li>
-            </ol>
-            <p>You will need to balance which process sounds the most reasonable for your amount of data.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <i class="fa fa-chevron-right"></i>
+                        <a class="underlined" data-toggle="collapse" data-parent="#accordion" href="#collapseSix"><b>Batch Adding Existing Caches of Movement Data</b></a>
+                      </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse">
+                      <div class="panel-body">
+                        <p>We have a process that allows us to add existing files all at once without using the web interface. This process requires:</p>
+                        <ol>
+                          <li>You fill out a spreadsheet, one row per file to specify all required info described above (a blank spreadsheet with the appropriate headers will be supplied, as well as some utility scripts to automate the data gathering)</li>
+                          <li>all the data files are transferred across to our servers (e.g. scp from a network drive)</li>
+                        </ol>
+                        <p>You will need to balance which process sounds the most reasonable for your amount of data.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+            <!---->
+
           </div>
         </div>
       </div>
@@ -88,6 +165,20 @@
   </div>
 </div>
 
+<% content_for :javascript do %>
 
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $('#accordion').on('hidden.bs.collapse', toggleIcon);
+        $('#accordion').on('shown.bs.collapse', toggleIcon);
+
+        function toggleIcon(e) {
+          $(e.target).prev().find("i").toggleClass('fa-chevron-down fa-chevron-right');
+        }
+      });
+    </script>
+
+<% end %>
 
 
