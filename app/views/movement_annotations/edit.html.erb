@@ -1,9 +1,9 @@
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper white-bg page-heading">
   <div class="col-lg-10">
     <h2>Edit Movement Annotation</h2>
     <ol class="breadcrumb">
       <li>
-        <a href="/">Home</a>
+        <a href="<%= url_for :controller => 'projects' %>">Home</a>
       </li>
       <li class="active">
         <strong>Editing Movement Annotation</strong>
@@ -19,6 +19,8 @@
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Edit an existing movement annotation</h5>
+        </div>
+        <div class="col-lg-12 border-bottom-mg-bt-top">
         </div>
         <div class="ibox-content">
           <%= render 'form' %>

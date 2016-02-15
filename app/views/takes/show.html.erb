@@ -1,5 +1,5 @@
 <% provide(:title, "Movement Take: #{@take.name}") %>
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper white-bg page-heading">
   <div class="col-lg-10">
     <h2><%= @take.name %><span class="padded-span"><% if authorized? @take %><small><%= link_to edit_link_html('Edit'), edit_take_path(@take) %><% end %></span></h2>
     <ol class="breadcrumb">
@@ -23,13 +23,15 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>Take Browser</h5>
+          <p class="p-gray"><b>Take Browser</b></p>
           <span class="padded-span">Take owned by <%= mail_to(@take.owner.email, @take.owner.display_name) %></span>
           <div class="pull-right">
             <span class="padded-span"><%= link_to link_html("download-alt", "Download this take"), controller: "takes", action: "export", id: @take.id unless @take.data_tracks.where(public: true).empty? %></span>
             <span class="padded-span"><% if authorized? @take %><%= link_to add_link_html("Add new track"), new_data_track_path(take_id: @take.id) %><% end %></span>
             <span class="padded-span"><%= link_to watch_link_html('View take in Mova'), mova_url + "take_id=#{@take.id}"%></span>
           </div>
+        </div>
+        <div class="col-lg-12 border-bottom-mg-bt-top">
         </div>
         <div class="ibox-content">
           <div class="row">

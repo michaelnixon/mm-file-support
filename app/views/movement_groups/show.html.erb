@@ -1,9 +1,9 @@
 <% provide(:title, "Movement Group: #{@movement_group.name}") %>
-<div class="row wrapper border-bottom white-bg page-heading">
-  <div class="col-lg-10">
-    <h2><%= @movement_group.name %> <% if authorized? @movement_group %><small><%= link_to edit_link_html('Edit'), edit_movement_group_path(@movement_group) %><% end %></h2>
+<div class="row wrapper white-bg page-heading">
+  <div class="col-lg-12">
+    <h1><%= @movement_group.name %> <% if authorized? @movement_group %><small><%= link_to edit_link_html('Edit'), edit_movement_group_path(@movement_group) %><% end %></h1>
     <ol class="breadcrumb">
-      <li><a href="/">Projects</a></li>
+      <li><a href="<%= url_for :controller => 'projects' %>">Home</a></li>
       <li><%= link_to @movement_group.project.name, project_path(@movement_group.project) %></li>
       <li><%= link_to @movement_group.name, movement_group_path(@movement_group) %></li>
     </ol>
@@ -12,12 +12,17 @@
   </div>
 </div>
 
+
+
+
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <h5>Edit an existing project</h5>
+        </div>
+        <div class="col-lg-12 border-bottom-mg-bt-top">
         </div>
         <div class="ibox-content">
           <div class="row">
@@ -109,14 +114,14 @@
           <% if @movement_group.takes.empty? %>
               <p>No takes attached yet. <% if authorized? @movement_group %>
                     <small><%= link_to add_link_html("Add new take"), new_take_path(movement_group_id: @movement_group.id) %></small></p>
-                <% end %></p>
-                </div>
+                <% end %>
+
           <% else %>
               <%= link_to 'Mova!', mova_url + "group_id=#{@movement_group.id}"%>
               <p><% if authorized? @movement_group %>
                     <small><%= link_to add_link_html("Add new take"), new_take_path(movement_group_id: @movement_group.id) %></small></p>
-                <% end %></p>
-                </div>
+                <% end %>
+
                 <table class="table">
                   <caption>Takes</caption>
                   <thead>

@@ -1,9 +1,9 @@
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper white-bg page-heading">
   <div class="col-lg-10">
     <h2>New Movement Annotation</h2>
     <ol class="breadcrumb">
       <li>
-        <a href="/">Home</a>
+        <a href="<%= url_for :controller => 'projects' %>">Home</a>
       </li>
       <li class="active">
         <strong>Add Movement Annotation</strong>
@@ -20,6 +20,8 @@
         <div class="ibox-title">
           <h5>Add new movement annotation</h5>
           <span class="padded-span">You can attach any kind of file that will provide an explanation of movement data.</span>
+        </div>
+        <div class="col-lg-12 border-bottom-mg-bt-top">
         </div>
         <div class="ibox-content">
           <%= render 'form' %>
