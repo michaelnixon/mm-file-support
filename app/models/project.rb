@@ -41,7 +41,12 @@ class Project < ActiveRecord::Base
     end
     m.uniq
   end
-  
+
+  # def email(project)
+  #   email=owner.where(id:1)
+  #   email=email.email;
+  # end
+
   # returns true if the project or any of its subsidiary components isn't true
   def any_not_public?
     return true unless self.public?

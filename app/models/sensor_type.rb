@@ -1,5 +1,6 @@
 class SensorType < ActiveRecord::Base
   has_many :data_tracks
+  has_many :takes
   
   validates :name, presence: true
 #  validates :description, presence: true

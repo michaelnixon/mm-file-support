@@ -4,7 +4,7 @@
     <h2><%= @take.name %><span class="padded-span"><% if authorized? @take %><small><%= link_to edit_link_html('Edit'), edit_take_path(@take) %><% end %></span></h2>
     <ol class="breadcrumb">
       <li>
-        <a href="/">Projects</a>
+        <a href="<%= url_for :controller => 'projects' %>">Home</a>
       </li>
       <li><%= link_to @take.movement_group.project.name, project_path(@take.movement_group.project) %></li>
       <li><%= link_to @take.movement_group.name, movement_group_path(@take.movement_group) %></li>
@@ -124,7 +124,7 @@
             <% else %>
                 <% data_track_counter ||= 1%>
                 <div class="panel-group" id="accordion<%=data_track_counter%>">
-                  <table class="table table-striped table-bordered" id="mytracks">
+                  <table class="table table-hover" id="mytracks">
                     <thead>
                     <tr>
                       <th>File name</th>

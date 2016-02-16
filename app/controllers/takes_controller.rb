@@ -1,7 +1,7 @@
 require 'zip'
 class TakesController < ApplicationController
   before_action :set_take, only: [:show, :edit, :update, :destroy, :export]
-  before_filter :ensure_logged_in, except: [:index, :show]
+  before_filter :ensure_logged_in, except: [:index, :show , :index_data_tables]
   before_filter ->(param=@take) { ensure_owner param }, only: %w{destroy}
   before_filter ->(param=@take) { ensure_authorized param }, only: %w{edit update}
   before_filter ->(param=@take) { ensure_public_or_authorized param }, only: %w{show}
@@ -9,9 +9,10 @@ class TakesController < ApplicationController
   def_param_group :take do
     param :take, Hash, :required => true, :action_aware => true do
       param :name, String, "Name of the take", :required => true
-      param :project_id, String, "Foreign key ID of the containing MovementGroup", :required => true      
+      param :project_id, String, "Foreign key ID of the containing MovementGroup", :required => true
       param :description, String, "Description of the take"
-      param :mover_ids, Array, "Foreign key IDs of related Movers"                
+      param :mover_ids, Array, "Foreign key IDs of related Movers"
+      #param :movement_group_id, String, "Foreign key IDs of Movement Group"
       param :sensor_type_ids, Array, "Foreign key IDs of the associated sensor types"            
       param :public, ["0", "1"], "Should this data track be accessible to the public? (Default: false)"  
     end
@@ -21,12 +22,45 @@ class TakesController < ApplicationController
   # GET /takes.json
   api :GET, "/takes.json", "List takes that are accessible by the current user or are marked public"
   error 401, "The user you attempted authentication with cannot be authenticated"  
+  # def index
+  #   if current_user
+  #     @takes = Take.select { |take| take.includes(:take, :owner, :asset, :sensor_types, :movers).is_accessible_by?(@current_user) or take.public? }
+  #   else
+  #     @takes =Take.select { |take| take.public? }
+  #   end
+  # end
+
+
+  #@data_tracks = DataTrack.includes(:take, :owner, :sensor_types, :movers).search(params[:search]).order(:name)
   def index
-    if current_user
-      @takes = Take.select { |take| take.includes(:take, :owner, :asset, :sensor_types, :movers).is_accessible_by?(@current_user) or take.public? }
-    else
-      @takes =Take.select { |take| take.public? }
-    end    
+    respond_to do |format|
+      format.html { }
+      format.json {
+        #@takes = Take.select { |take| take.includes(:take, :owner, :asset, :sensor_types, :movers)}
+        @takes = Take.includes(:movement_group , :sensor_types, :movers).search(params[:search]).order(:name)
+        if current_user
+          @takes.select! { |take| take.public? or take.is_accessible_by?(@current_user)  }
+        else
+          @takes.select! { |take| take.public? }
+        end
+      }
+    end
+  end
+
+
+  def index_data_tables
+    # @data_tracks = DataTrack.includes(:take, :owner, :sensor_types, :movers)
+    # if @current_user
+    #   @data_tracks.select! { |data_track| data_track.public? or data_track.is_accessible_by?(@current_user)  }
+    # else
+    #   @data_tracks.select! { |data_track| data_track.public? }
+    # end
+    # respond_to do |format|
+    #   format.json { render json: { :data => @data_tracks.map(&:attributes) }}
+    # end
+    respond_to do |format|
+      format.json { render json: TakeDatatable.new(view_context)}
+    end
   end
 
   # GET /takes/1

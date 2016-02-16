@@ -14,6 +14,14 @@ class Take < ActiveRecord::Base
     owner == user or movement_group.is_accessible_by? user
   end
 
+  def self.search(search)
+    if search
+      where("name like ? or description like ?", "%#{search}%", "%#{search}%")
+    else
+      all
+    end
+  end
+
   def public_data_tracks
     data_tracks.where(public: true)
   end

@@ -1,35 +1,119 @@
-<h1>Listing takes</h1>
+<% provide(:title, 'Accessible Takes') %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Movement Group</th>
-      <th>Public</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row wrapper white-bg page-heading">
+  <div class="col-lg-12">
+    <h1>Takes Browser</h1>
 
-  <tbody>
-    <% @takes.each do |take| %>
-      <tr>
-        <td><%= take.name %></td>
-        <td><%= take.description %></td>
-        <td><%= take.movement_group %></td>
-        <td><%= take.public %></td>
-        <td><%= take.owner %></td>
-        <td><%= link_to 'Show', take %></td>
-        <td><%= link_to 'Edit', edit_take_path(take) %></td>
-        <td><%= link_to 'Destroy', take, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <button type="button" id="search_data_tracks" class="pull-right">Go</button>
+    <button type="button" id="clear_search_data_tracks" class="pull-right" style="display: none">Clear</button>
+    <input type="text" class="pull-right col-lg-2" id="myInputTextField" placeholder="Search">
 
-<br>
+    <ol class="breadcrumb">
+      <li>
+        <a href="<%= url_for :controller => 'projects' %>">Home</a>
+      </li>
+      <li class="active">
+        <strong>Takes</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
 
-<%= link_to 'New Take', new_take_path %>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <div id="loader" class="spiner-example">
+            <div class="sk-spinner sk-spinner-rotating-plane"></div>
+          </div>
+          <table class="table table-hover" id="takes-table" data-source="<%= takes_ajax_path(format: :json) %>">
+            <thead>
+            <tr>
+              <th>Take Name</th>
+              <th>Movement Group Name</th>
+              <th>Movers</th>
+              <!--<th>Sensors</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :javascript do %>
+
+    <script type="text/javascript">
+      //      $(function() {
+      //        $('#tracks-table').dataTable({
+      //        "processing": true,
+      //        "serverSide": true,
+      //        "bDeferRender": true,
+      //        "bSortClasses": false,
+      //        "ajax": $('#tracks-table').data('source'),
+      //        "pagingType": "full_numbers",
+      //          "sDom": '<"top">rt<"bottom"flp><"clear">',
+      //        "columnDefs": [{
+      //            "bSortable": false,
+      //            "aTargets": ['nosort']
+      //            }]
+      //        });
+      //      });
+
+      var showMessage=function(){
+        $("#loader").show();
+        $(".table").hide();
+      };
+      var hideOverlay=function(){
+        $("#loader").hide()
+        $(".table").show();
+      };
+      $(function() {
+        oTable=$('#takes-table').DataTable({
+          "fnPreDrawCallback": function() {
+            // gather info to compose a message
+            showMessage();
+            return true;
+          },
+          "fnDrawCallback": function() {
+            // in case your overlay needs to be put away automatically you can put it here
+            hideOverlay();
+          },
+          "bFilter":true,
+          "language": {
+            "lengthMenu": "Show  _MENU_  entries",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)"
+          },
+          "processing": false,
+          "serverSide": true,
+          "bDeferRender": true,
+          "bSortClasses": false,
+          "ajax": $('#takes-table').data('source'),
+        });
+
+        $('#search_data_tracks').click(function(){
+          oTable.search($('#myInputTextField').val()).draw() ;
+          $('#search_data_tracks').hide();
+          $('#clear_search_data_tracks').show();
+        })
+
+
+        $('#clear_search_data_tracks').click(function(){
+          oTable.search('').draw();
+          $('#myInputTextField').val('');
+          $('#clear_search_data_tracks').hide();
+          $('#search_data_tracks').show();
+        })
+      });
+    </script>
+<% end %>

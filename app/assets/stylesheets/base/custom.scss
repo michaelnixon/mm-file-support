@@ -216,6 +216,11 @@ div.dataTables_length label {
   padding-left: 8px;
 }
 
+div.dataTables_paginate{
+  position: absolute;
+  right: 0px;
+
+}
 @media (min-width: 768px) {
   /* line 204, /home/subir/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.0.0/assets/stylesheets/bootstrap/_dropdowns.scss */
   .navbar-right .dropdown-menu {
