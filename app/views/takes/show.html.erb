@@ -127,12 +127,12 @@
                   <table class="table table-hover" id="mytracks">
                     <thead>
                     <tr>
-                      <th class="col-lg-5">File name</th>
+                      <th class="col-lg-7">File name</th>
                       <th class="col-lg-1">File type</th>
-                      <th class="col-lg-2">Sensors</th>
+                      <th class="col-lg-1">Sensors</th>
                       <th class="col-lg-1">Technician</th>
                       <th class="col-lg-2">Movers</th>
-                      <th class="col-lg-1">Recorded on</th>
+                      <!--<th class="col-lg-1">Recorded on</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -153,7 +153,7 @@
                           <td class="col-lg-2"><%= raw(track.sensor_types.map{|type| link_to(type.name, sensor_type_path(type)) }.join(", "))%></td>
                           <td class="col-lg-1"><%= track.technician %></td>
                           <td class="col-lg-2"><%= raw(track.movers.map{|m| link_to(m.name, mover_path(m)) }.join(", "))%></td>
-                          <td class="col-lg-1"><% unless track.recorded_on.nil? %><%= track.recorded_on %><% end %></td>
+                          <!--<td class="col-lg-1"><% unless track.recorded_on.nil? %><%= track.recorded_on %><% end %></td>-->
                         </tr>
                     <% end %>
                     </tbody>
