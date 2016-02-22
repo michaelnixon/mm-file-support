@@ -139,7 +139,7 @@
                     <tbody>
                     <% @take.data_tracks.includes(:take, :owner, :asset, :sensor_types, :movers ).order(:name).select {|track| track.public? or track.is_accessible_by?(@current_user)}.each do |track| %>
                         <tr>
-                          <td class="col-lg-3"><%= link_to truncate(track.name, length: 50), track %>
+                          <td class="col-lg-2"><%= link_to truncate(track.name, length: 50), track %>
                             <span class="pull-right">
                               <% if authorized? track %>
                                 <small><%= link_to edit_link_html, edit_data_track_path(track) %> <%= link_to remove_link_html, track, method: :delete, data: { confirm: 'Are you sure?' } %></small>
@@ -151,7 +151,7 @@
                             </span>
                           </td>
 
-                          <td class="col-lg-2"><%= track.description%></td>
+                          <td class="col-lg-4"><%= track.description%></td>
                           <td class="col-lg-1"><% unless track.asset.nil? %><%= track.asset.file_content_type %> (<%= File.extname(track.asset.file_file_name).downcase %>)<% else %>unknown<% end %></td>
                           <td class="col-lg-2"><%= raw(track.sensor_types.map{|type| link_to(type.name, sensor_type_path(type)) }.join(", "))%></td>
                           <td class="col-lg-1"><%= track.technician %></td>

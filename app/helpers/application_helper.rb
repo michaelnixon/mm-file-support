@@ -20,7 +20,8 @@ module ApplicationHelper
   
   # relies on sending type with a string that matches to a glyphicon class
   def link_html(type, text = '')
-    base_link = raw("<span class='glyphicon glyphicon-#{type}'></span>")
+    #base_link = raw("<span class='glyphicon glyphicon-#{type}'></span>")
+    base_link = raw("")
     if text.empty?
       base_link
     else
