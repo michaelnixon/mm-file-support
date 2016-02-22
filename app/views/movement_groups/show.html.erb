@@ -126,22 +126,22 @@
                   <caption>Takes</caption>
                   <thead>
                   <tr>
-                    <th>Take name</th>
-                    <th>Take description</th>
-                    <th># Tracks</th>
+                    <th class="col-lg-5">Take name</th>
+                    <th class="col-lg-6">Take description</th>
+                    <th class="col-lg-1"># Tracks</th>
                   </tr>
                   </thead>
                   <tbody>
                   <% @movement_group.accessible_and_public_takes(current_user).each do |take| %>
                       <tr>
-                        <td><%= link_to truncate(take.name, length: 50), take_path(take)%>
+                        <td class="col-lg-5"><%= link_to take.name, take_path(take)%>
                           <span class="pull-right">
 						<%= link_to 'Mova!', mova_url + "take_id=#{take.id}"%>
                             <% if authorized? take %>
 							<small><%= link_to edit_link_html, edit_take_path(take) %> <%= link_to remove_link_html, take, method: :delete, data: { confirm: 'Are you sure?' } %></small>
 						<% end %></span></td>
-                        <td><%= truncate(take.description, length: 100) %></td>
-                        <td><%= take.data_tracks.count %></td>
+                        <td class="col-lg-6"><%= take.description %></td>
+                        <td class="col-lg-1"><%= take.data_tracks.count %></td>
                       </tr>
                   <% end %>
                   </tbody>
