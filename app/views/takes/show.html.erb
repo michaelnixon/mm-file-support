@@ -128,6 +128,7 @@
                     <thead>
                     <tr>
                       <th class="col-lg-7">File name</th>
+                      <th class="col-lg-1">Track Description</th>
                       <th class="col-lg-1">File type</th>
                       <th class="col-lg-1">Sensors</th>
                       <th class="col-lg-1">Technician</th>
@@ -136,9 +137,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% @take.data_tracks.includes(:take, :owner, :asset, :sensor_types, :movers).order(:name).select {|track| track.public? or track.is_accessible_by?(@current_user)}.each do |track| %>
+                    <% @take.data_tracks.includes(:take, :owner, :asset, :sensor_types, :movers ).order(:name).select {|track| track.public? or track.is_accessible_by?(@current_user)}.each do |track| %>
                         <tr>
-                          <td class="col-lg-5"><%= link_to truncate(track.name, length: 50), track %>
+                          <td class="col-lg-3"><%= link_to truncate(track.name, length: 50), track %>
                             <span class="pull-right">
                               <% if authorized? track %>
                                 <small><%= link_to edit_link_html, edit_data_track_path(track) %> <%= link_to remove_link_html, track, method: :delete, data: { confirm: 'Are you sure?' } %></small>
@@ -146,14 +147,16 @@
                                 <% unless track.asset.nil? %>
                                   <%= link_to download_link_html("Download"), track.asset.file.url(:original, false)%>
                                 <% end %>
+                              <% end %>
                             </span>
                           </td>
-				              <% end %>
+
+                          <td class="col-lg-2"><%= track.description%></td>
                           <td class="col-lg-1"><% unless track.asset.nil? %><%= track.asset.file_content_type %> (<%= File.extname(track.asset.file_file_name).downcase %>)<% else %>unknown<% end %></td>
                           <td class="col-lg-2"><%= raw(track.sensor_types.map{|type| link_to(type.name, sensor_type_path(type)) }.join(", "))%></td>
                           <td class="col-lg-1"><%= track.technician %></td>
                           <td class="col-lg-2"><%= raw(track.movers.map{|m| link_to(m.name, mover_path(m)) }.join(", "))%></td>
-                          <!--<td class="col-lg-1"><% unless track.recorded_on.nil? %><%= track.recorded_on %><% end %></td>-->
+                          <!--<td class="col-lg-1">< unless track.recorded_on.nil? %><= track.recorded_on %>< end %></td>-->
                         </tr>
                     <% end %>
                     </tbody>
