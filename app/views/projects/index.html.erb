@@ -55,8 +55,7 @@
                     <td class="col-lg-1"><% if project.public? %>
                           <i class="fa fa-unlock fa-2x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i>
                       <% else %>
-                          <!--<a data-toggle="tooltip" data-placement="right" title='< project.email(1) %>'></a>-->
-                          <i class="fa fa-lock fa-2x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i>
+                          <a data-toggle="tooltip" data-placement="right" title='<%= 'Please contact ' + project.owner.alias + ' ('+project.owner.email+')'+ ' to request access to this project.' %>'><i class="fa fa-lock fa-2x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i></a>
                       <% end %>
                       </tr>
             <% end %>
