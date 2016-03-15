@@ -21,8 +21,8 @@
 //= require toastr
 
 // require jquery
-// require jquery.turbolinks
-// require jquery_ujs
+//= require jquery.turbolinks
+//= require jquery_ujs
 // require bootstrap.min
 // require dataTables/jquery.dataTables
 // require dataTables/bootstrap/3/jquery.dataTables.bootstrap

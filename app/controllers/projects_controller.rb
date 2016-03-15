@@ -1,7 +1,7 @@
 require 'zip'
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy, :export, :make_public]
-  before_filter :ensure_logged_in, except: [:index, :show]
+  before_filter :ensure_logged_in, except: [:index, :show,:export]
   before_filter ->(param=@project) { ensure_owner param }, only: %w{destroy}
   before_filter ->(param=@project) { ensure_authorized param }, only: %w{edit update}
   before_filter ->(param=@project) { ensure_public_or_authorized param }, only: %w{show}
@@ -163,7 +163,8 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id], :include => [:owner, :movement_groups])
+      #@project = Project.find(params[:id], :include => [:owner, :movement_groups])
+      @project = Project.includes(:owner, :movement_groups).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

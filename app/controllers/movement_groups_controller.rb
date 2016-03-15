@@ -1,7 +1,7 @@
 require 'zip'
 class MovementGroupsController < ApplicationController
   before_action :set_movement_group, only: [:show, :edit, :update, :destroy, :export]
-  before_filter :ensure_logged_in, except: [:index, :show]
+  before_filter :ensure_logged_in, except: [:index, :show,:export]
   before_filter ->(param=@movement_group) { ensure_owner param }, only: %w{destroy}
   before_filter ->(param=@movement_group) { ensure_authorized param }, only: %w{edit update}
   before_filter ->(param=@movement_group) { ensure_public_or_authorized param }, only: %w{show}
