@@ -32,13 +32,15 @@ class TakeDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    # update later to include filtering
-    @take = Take.all.includes(:movement_group, :movers).references(:movement_group, :movers).distinct
-    if @current_user
-      @take.select! { |take| take.public? or take.is_accessible_by?(@current_user)  }
-    else
-      @take.select! { |take| take.public? }
-    end
+    # update later to include filtering of takes which are accessible to current user
+    @take = Take.where(public:true).includes(:movement_group, :movers).references(:movement_group, :movers).distinct
+    #@take = Take.is_accessible_by(@current_user).includes(:movement_group, :movers).references(:movement_group, :movers).distinct
+    #if @current_user
+      #@take.select! { |take| take.public? or take.is_accessible_by?(@current_user)  }
+    #else
+      #@take.select! { |take| take.public? }
+      #@take.where(public:"False")
+    #end
   end
 
   # ==== Insert 'presenter'-like methods below if necessary
