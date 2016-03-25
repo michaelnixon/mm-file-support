@@ -24,8 +24,20 @@ a:hover{
 //  background-color: white;
 //}
 
+.skin-3 .navbar-static-top {
+    background: white;
+    padding-top: 10px;
+}
+
+.navbar-fixed-top .navbar-collapse, .navbar-static-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 45px;
+}
+
+
 .panel {
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
   background-color: white;
   border: 0px solid transparent;
   border-radius: 0px;
