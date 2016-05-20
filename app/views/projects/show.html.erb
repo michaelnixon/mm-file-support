@@ -31,8 +31,9 @@
           <p class="p-gray"><b>Movement Group Browser</b></p>
           <span class="padded-span">Project owned by <%= mail_to(@project.owner.email, @project.owner.display_name) %></span>
           <div class="pull-right">
-          <span class="padded-span"><%= link_to link_html("download-alt", "Download this project"), controller: "projects", action: "export", id: @project.id unless @project.movement_groups.where(public: true).empty? %></span>
-          <span class="padded-span"><%= link_to add_link_html("Add new movement group"), new_movement_group_path(project_id: @project.id) %></span>
+            <!--<span class="padded-span"><%= link_to link_html("download-alt", "Download this project"), controller: "projects", action: "export", id: @project.id unless @project.movement_groups.where(public: true).empty? %></span>-->
+            <span class="padded-span"><%= link_to link_html("download-alt", "Download this project"), moda_url + "project_#{@project.id}.zip"%></span>
+            <span class="padded-span"><%= link_to add_link_html("Add new movement group"), new_movement_group_path(project_id: @project.id) %></span>
           <!--<span class="padded-span"><%= link_to watch_link_html('View in Mova!'), mova_url + "project_id=#{@project.id}"%></span>-->
           </div>
         </div>

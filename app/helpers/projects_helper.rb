@@ -35,5 +35,11 @@ module ProjectsHelper
     #"http://142.58.181.193/MovAn/movan/index.php"
     "http://moda.movingstories.ca/Mova/index.php?"
   end
-  
+
+  def moda_url
+    #"http://www.sfu.ca/~oalemi/movan/"
+    #"http://142.58.181.193:8080/index.php"
+    #"http://142.58.181.193/MovAn/movan/index.php"
+    "http://moda.movingstories.ca/system/assets/projects/"
+  end
 end
