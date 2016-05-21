@@ -2,7 +2,7 @@
 <div class="row wrapper white-bg page-heading">
   <div class="col-lg-12">
     <h1>Project Browser</h1>
-    <input type="text" class="pull-right col-lg-2" id="myInputTextField" placeholder="Search">
+    <input type="text" class="pull-right col-lg-3 search-input" id="myInputTextField" placeholder="Search">
     <ol class="breadcrumb">
       <li>
         <a href="<%= url_for :controller => 'projects' %>">Home</a>
@@ -29,7 +29,7 @@
               <th class="col-lg-4">Movement Groups</th>
               <th class="col-lg-2">Sensors</th>
               <th class="col-lg-2">Associated Movers</th>
-              <th class="col-lg-1">Tags</th>
+              <!-- <th class="col-lg-1">Tags</th> -->
               <th class="col-lg-1">Access</th>
             </tr>
             </thead>
@@ -51,11 +51,11 @@
                     <td class="col-lg-4"><%= raw(project.movement_groups.includes(:owner).map{|group| group_link_or_name(group) }.join(", "))%></td>
                     <td class="col-lg-2"><%= raw(project.sensor_types.map{|type| link_to(type.name, sensor_type_path(type),class:"underlined") }.join(", "))%></td>
                     <td class="col-lg-2"><%= raw(project.all_movers.map{|mover| link_to(mover.name, mover_path(mover),class:"underlined") }.join(", "))%></td>
-                    <td class="col-lg-1"><%= project.tag_list %></td>
+                    <!-- <td class="col-lg-1"><%= project.tag_list %></td> -->
                     <td class="col-lg-1"><% if project.public? %>
-                          <i class="fa fa-unlock fa-2x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i>
+                          <i class="fa fa-unlock fa-1x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i>
                       <% else %>
-                          <a data-toggle="tooltip" data-placement="right" title='<%= 'Please contact ' + project.owner.alias + ' ('+project.owner.email+')'+ ' to request access to this project.' %>'><i class="fa fa-lock fa-2x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i></a>
+                          <a data-toggle="tooltip" data-placement="right" title='<%= 'Please contact ' + project.owner.alias + ' ('+project.owner.email+')'+ ' to request access to this project.' %>'><i class="fa fa-lock fa-1x col-sm-offset-4 col-md-offset-4 col-lg-offset-4"></i></a>
                       <% end %>
                       </tr>
             <% end %>

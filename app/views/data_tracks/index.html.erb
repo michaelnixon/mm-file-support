@@ -3,10 +3,19 @@
 <div class="row wrapper white-bg page-heading">
   <div class="col-lg-12">
     <h1>Track Browser</h1>
+    <p class="pull-right col-lg-3 input-group">
+      <input type="text" class="form-control search-input" id="myInputTextField" placeholder="Search" name="q" />
+       <span class="input-group-addon search-icon search-input">
+        <span class="glyphicon glyphicon-search"  id="search_data_tracks" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-remove-circle"  id="clear_search_data_tracks" aria-hidden="true" style="display: none"></span>
+       </span>
+      <input type="hidden"  name="mode" value="web" />
+    </p>
 
-    <button type="button" id="search_data_tracks" class="pull-right">Go</button>
-    <button type="button" id="clear_search_data_tracks" class="pull-right" style="display: none">Clear</button>
-    <input type="text" class="pull-right col-lg-2" id="myInputTextField" placeholder="Search">
+   <!--  <button type="button" id="ddsearch_data_tracks" class="pull-right">Go</button>
+
+    <button type="button" id="dfclear_search_data_tracks" class="pull-right" style="display: none">Clear</button> -->
+    <!-- <input type="text" class="pull-right col-lg-2 search-input" id="myInputTextField" placeholder="Search"> -->
 
     <ol class="breadcrumb">
       <li>

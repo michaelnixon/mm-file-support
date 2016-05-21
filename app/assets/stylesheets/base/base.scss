@@ -47,6 +47,20 @@ a {
   text-decoration: none;
 }
 
+.search-input {
+    border-right: 0;
+    border-left:0;
+    border-top:0;
+}
+
+.dataTables_paginate {
+  border-right: 0;
+  border-left:0;
+  border-top:0;
+}
+
+
+dataTables_paginate paging_simple_numbers
 a:hover, a:focus {
   text-decoration: none;
 }
@@ -190,7 +204,7 @@ video {
 }
 
 #page-wrapper {
-  padding: 0 15px;
+  padding: 0 40px;
   min-height: 568px;
   position: relative !important;
 }
