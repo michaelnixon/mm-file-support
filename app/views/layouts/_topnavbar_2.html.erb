@@ -1,14 +1,22 @@
 <div class="row white-bg">
     <nav class="navbar navbar-static-top" role="navigation">
     <div class="navbar-header col-lg-6">
-        <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+        <!-- <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
             <i class="fa fa-reorder"></i>
-        </button>
-        <a href="<%= url_for :controller => 'projects' %>" target=""><%= image_tag("LOGO-MoDa-MD.png", size: "346x114", alt: "MODA Logo") %></a>
-        <!--<a href="#" class="navbar-brand">MoDa</a>-->
+        </button> -->
+          <div class="col-lg-2">
+            <a class="pu"href="<%= url_for :controller => 'projects' %>" target="">
+              <%= image_tag("LOGO-MoDa.png", size: "115x114", alt: "MODA Logo") %>
+            </a>
+          </div>
+          <div class="col-lg-10 logo">
+            <p class="" href=""> The Open Source Movement Database</p>
+          </div> 
     </div>
+
+
     <div class="collapse navbar-collapse col-lg-6" id="navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right" style="margin-right: 20px";>
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 20px;margin-top: -7px;">
         <li class="dropdown <%= is_active_controller('projects') %> <%= is_active_controller('data_tracks') %> <%= is_active_controller('takes') %>">
           <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Browse <span class="caret"></span></a>
           <ul role="menu" class="dropdown-menu">
