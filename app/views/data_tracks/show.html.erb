@@ -9,7 +9,7 @@
       <li><%= link_to @data_track.take.movement_group.project.name, project_path(@data_track.take.movement_group.project) %></li>
       <li><%= link_to @data_track.take.movement_group.name, movement_group_path(@data_track.take.movement_group) %></li>
       <li><%= link_to @data_track.take.name, take_path(@data_track.take) %></li>
-      <li class="active"><%= link_to @data_track.name, data_track_path(@data_track) %></li>
+      <li class="active"><strong><%= link_to @data_track.name, data_track_path(@data_track) %></li></strong>
     </ol>
   </div>
   <div class="col-lg-2">
@@ -20,7 +20,13 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-
+          <p class="p-gray"><b>Track Browser</b></p>
+          <span class="padded-span">Track owned by <%= mail_to(@data_track.owner.email, @data_track.owner.display_name,class:"underlined") %></span>
+          <div class="pull-right">
+            <span class="padded-span"><%= link_to link_html("download-alt", "Download this track"), 
+            @data_track.asset.file.url(:original, false)%></span>
+            <span class="padded-span"><%= link_to link_html("picture", "View in Mova"), mova_url + "take_id=#{@data_track.take.id}&track_id=#{@data_track.id}"%></span>
+          </div>
         </div>
         <div class="col-lg-12 border-bottom-mg-bt-top">
         </div>
@@ -87,15 +93,15 @@
           </div>
           <div class="row">
             <div class="col-xs-6">
-              <% unless @data_track.asset.nil? %>
+<!--               <% unless @data_track.asset.nil? %>
                   <p><%= link_to link_html("download", @data_track.asset.file_file_name), @data_track.asset.file.url(:original, false) %> (<%= @data_track.asset.file_content_type %>)<br/>
                     <%= link_to link_html("picture", "View in Mova"), mova_url + "take_id=#{@data_track.take.id}&track_id=#{@data_track.id}"%>
                   </p>
-              <% end %>
-              <% if @data_track.owner %>
+              <% end %> -->
+<!--               <% if @data_track.owner %>
                   Project owned by <%= @data_track.owner.email %><br/>
                   <%= image_tag(@data_track.owner.avatar.url(:thumb)) if @data_track.owner.avatar?%>
-              <% end %>
+              <% end %> -->
             </div>
             <div class="col-xs-6">
               <h5>Attached Files</h5>

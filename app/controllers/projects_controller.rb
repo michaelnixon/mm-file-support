@@ -9,7 +9,9 @@ class ProjectsController < ApplicationController
   def_param_group :project do
     param :project, Hash, :required => true, :action_aware => true do
       param :name, String, "Name of the Data Track", :required => true
-      param :description, String, "Description of the Data Track", :required => true      
+      param :description, String, "Description of the Data Track", :required => true
+      param :long_project_desc, String, "Long Description of the Data Track", :required => true  
+      param :institute_name, String, "Institute Name", :required => true    
       param :public, ["0", "1"], "Should this project be accessible to the public? (Default: false)"
       param :mover_ids, Array, "Foreign key IDs of related Movers"     
       param :sensor_type_ids, Array, "Foreign key IDs of the associated sensor types"            
@@ -169,7 +171,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :description, :tag_list, :public, :license, :sensor_type_ids => [], :mover_ids => [])
+      params.require(:project).permit(:name, :description,:long_project_desc,:institute_name, :tag_list, :public, :license, :sensor_type_ids => [], :mover_ids => [])
     end
     
     def sanitize_filename(filename)

@@ -108,7 +108,7 @@ class DataTrack < ActiveRecord::Base
         end
       end
       take.save!      
-      
+
       #track = DataTrack.find_by_name(row['data_track_name']) || DataTrack.create(name: row['data_track_name'])
       track = DataTrack.create(name: row['data_track_name'])
       track.take = take
@@ -135,7 +135,7 @@ class DataTrack < ActiveRecord::Base
           sensor = SensorType.find_by_name(name.strip) || SensorType.new(name: name.strip)
           unless track.sensor_types.include?(sensor)
             track.sensor_types << sensor
-          end        
+          end
         end
       end
       unless track.asset and not override

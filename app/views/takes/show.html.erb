@@ -24,7 +24,7 @@
       <div class="ibox float-e-margins">
         <div class="ibox-title">
           <p class="p-gray"><b>Take Browser</b></p>
-          <span class="padded-span">Take owned by <%= mail_to(@take.owner.email, @take.owner.display_name) %></span>
+          <span class="padded-span">Take owned by <%= mail_to(@take.owner.email, @take.owner.display_name,class:"underlined") %></span>
           <div class="pull-right">
             <span class="padded-span"><%= link_to link_html("download-alt", "Download this take"), controller: "takes", action: "export", id: @take.id unless @take.data_tracks.where(public: true).empty? %></span>
             <span class="padded-span"><% if authorized? @take %><%= link_to add_link_html("Add new track"), new_data_track_path(take_id: @take.id) %><% end %></span>

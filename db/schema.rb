@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528224208) do
+ActiveRecord::Schema.define(version: 20160530001922) do
 
   create_table "access_groups", force: true do |t|
     t.string   "name"
@@ -43,18 +43,17 @@ ActiveRecord::Schema.define(version: 20150528224208) do
 
   create_table "data_tracks", force: true do |t|
     t.string   "name"
-    t.text     "description",        limit: 255
-    t.integer  "movement_stream_id"
+    t.text     "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "technician"
-    t.boolean  "public",                         default: false
+    t.boolean  "public",                  default: false
     t.integer  "user_id"
     t.date     "recorded_on"
     t.integer  "take_id"
   end
 
-  add_index "data_tracks", ["user_id"], name: "index_data_tracks_on_user_id"
+  add_index "data_tracks", ["user_id"], name: "index_data_tracks_on_user_id", using: :btree
 
   create_table "data_tracks_movers", id: false, force: true do |t|
     t.integer "data_track_id"
@@ -68,19 +67,18 @@ ActiveRecord::Schema.define(version: 20150528224208) do
 
   create_table "movement_annotations", force: true do |t|
     t.string   "name"
-    t.text     "description",      limit: 255
+    t.text     "description",   limit: 255
     t.string   "format"
-    t.integer  "movement_data_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",                       default: false
+    t.boolean  "public",                    default: false
     t.integer  "user_id"
     t.integer  "attached_id"
     t.string   "attached_type"
   end
 
-  add_index "movement_annotations", ["attached_id", "attached_type"], name: "index_movement_annotations_on_attached_id_and_attached_type"
-  add_index "movement_annotations", ["user_id"], name: "index_movement_annotations_on_user_id"
+  add_index "movement_annotations", ["attached_id", "attached_type"], name: "index_movement_annotations_on_attached_id_and_attached_type", using: :btree
+  add_index "movement_annotations", ["user_id"], name: "index_movement_annotations_on_user_id", using: :btree
 
   create_table "movement_groups", force: true do |t|
     t.string   "name"
@@ -92,7 +90,7 @@ ActiveRecord::Schema.define(version: 20150528224208) do
     t.integer  "user_id"
   end
 
-  add_index "movement_groups", ["user_id"], name: "index_movement_groups_on_user_id"
+  add_index "movement_groups", ["user_id"], name: "index_movement_groups_on_user_id", using: :btree
 
   create_table "movement_groups_movers", id: false, force: true do |t|
     t.integer "movement_group_id"
@@ -133,13 +131,15 @@ ActiveRecord::Schema.define(version: 20150528224208) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description", limit: 255
-    t.boolean  "public",                  default: false
+    t.text     "description",       limit: 255
+    t.boolean  "public",                        default: false
     t.integer  "user_id"
     t.text     "license"
+    t.string   "institute_name"
+    t.string   "long_project_desc"
   end
 
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "projects_sensor_types", id: false, force: true do |t|
     t.integer "sensor_type_id", null: false
@@ -173,14 +173,14 @@ ActiveRecord::Schema.define(version: 20150528224208) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
 
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "takes", force: true do |t|
     t.string   "name"
@@ -192,8 +192,8 @@ ActiveRecord::Schema.define(version: 20150528224208) do
     t.datetime "updated_at"
   end
 
-  add_index "takes", ["movement_group_id"], name: "index_takes_on_movement_group_id"
-  add_index "takes", ["user_id"], name: "index_takes_on_user_id"
+  add_index "takes", ["movement_group_id"], name: "index_takes_on_movement_group_id", using: :btree
+  add_index "takes", ["user_id"], name: "index_takes_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"

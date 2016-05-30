@@ -19,6 +19,14 @@
     <%= f.label :description, class: "control-label" %><br>
     <%= f.text_area :description, size: "60x12", class: "form-control", placeholder: "Project description", required: "required" %>
   </div>
+    <div class="field form-group">
+    <%= f.label :long_project_description, class: "control-label" %><br>
+    <%= f.text_area :long_project_desc, size: "60x12", class: "form-control", placeholder: "Long Project description", required: "required" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :institute_name, class: "control-label" %><br>
+    <%= f.text_field :institute_name, size: 60, class: "form-control", placeholder: "Institute Name", required: "required", autofocus: "autofocus" %>
+  </div>
   <div class="field form-group">
 		<%= f.label :movers, class: "control-label"%><br/>
 		<%= f.collection_select :mover_ids, Mover.all, :id, :name, {:include_blank => 'None'}, {:multiple => true} %>

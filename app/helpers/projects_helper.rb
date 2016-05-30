@@ -13,7 +13,7 @@ module ProjectsHelper
   
   def group_link_or_name(group)
     if group.is_accessible_by?(current_user) or group.public?
-      link_to(group.name, movement_group_path(group),class:"underlined")
+      link_to(group.name, movement_group_path(group),class:"")
     else
       group.name
     end

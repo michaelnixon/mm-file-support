@@ -2,11 +2,11 @@
   <h2 class="form-signin-heading">Please sign in</h2>
   <p>
     <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email], class: "form-control", placeholder: "Email address", required: "required", autofocus: "autofocus" %>
+    <%= text_field_tag :email, params[:email], class: "form-control search-input", placeholder: "Email address", required: "required", autofocus: "autofocus" %>
   </p>
   <p>
     <%= label_tag :password %><br />
-    <%= password_field_tag :password, nil, class: "form-control", required: "required" %>
+    <%= password_field_tag :password, nil, class: "form-control search-input", required: "required" %>
   </p>
   <label class="checkbox">
     <input type="checkbox" value="remember_me" name="remember_me"> Remember me
