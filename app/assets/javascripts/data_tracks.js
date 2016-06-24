@@ -1,4 +1,3 @@
-
 //= require iCheck/icheck.min.js
 //= require jeditable/jquery.jeditable.js
 //= require dataTables/jquery.dataTables.js
@@ -8,6 +7,7 @@
 //= require jqGrid/i18n/grid.locale-el.js
 //= require jqGrid/jquery.jqGrid.min.js
 //= require jquery-ui/jquery-ui.min.js
+//= require datapicker/bootstrap-datepicker.js
 
 
 //jQuery(document).ready(function() {

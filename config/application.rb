@@ -23,7 +23,7 @@ module FileSupportMovingstories
     ActsAsTaggableOn.remove_unused_tags = true
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
-    config.assets.precompile += [ 'appviews.css', 'cssanimations.css', 'dashboards.css', 'data_tracks.css','forms.css', 'gallery.css', 'graphs.css', 'mailbox.css', 'miscellaneous.css', 'pages.css','projects.css', 'sessions.css','tables.css', 'uielements.css', 'widgets.css' ]
+    config.assets.precompile += [ 'appviews.css', 'cssanimations.css', 'dashboards.css', 'data_tracks.css','forms.css', 'gallery.css', 'graphs.css', 'mailbox.css', 'miscellaneous.css', 'pages.css','password_resets','projects.css', 'sessions.css','tables.css', 'uielements.css', 'widgets.css' ]
     config.assets.precompile += [ 'appviews.js', 'cssanimations.js','custom.js','dashboards.js','data_tracks.js','forms.js', 'gallery.js', 'graphs.js','inspinia.js' ,'mailbox.js', 'miscellaneous.js', 'pages.js', 'projects.js','tables.js','takes.js', 'uielements.js', 'widgets.js', ]
     config.exceptions_app = self.routes
   end

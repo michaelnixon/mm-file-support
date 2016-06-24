@@ -31,16 +31,6 @@
 		<%= f.text_field :recorded_on, class: "form-control" %><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
   </div>
 
-	<script type="text/javascript">
-	  $(document).ready(function(){
-	    $('.input-group.date').datepicker({
-	    format: "yyyy-mm-dd",
-	    todayBtn: "linked",
-	    autoclose: true,
-	    todayHighlight: true
-	    });
-	  })
-	</script>
 	<br/>
 
   <div class="field form-group">
@@ -82,4 +72,17 @@
   <div class="actions">
 		<%= f.submit class: "btn btn-primary" %>
   </div>
+  <% content_for :javascript do %>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+      $('.input-group.date').datepicker({
+      format: "yyyy-mm-dd",
+      todayBtn: "linked",
+      autoclose: true,
+      todayHighlight: true
+     });
+   })
+ </script>
+  <% end %>
 <% end %>
