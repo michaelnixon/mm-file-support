@@ -46,6 +46,7 @@ gem 'ajax-datatables-rails'
 gem 'kaminari'
 gem 'rubyzip'
 gem 'toastr-rails'
+gem 'rails_12factor'
 
 group :development do
     gem 'railroady'
