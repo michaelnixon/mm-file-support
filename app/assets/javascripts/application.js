@@ -29,6 +29,8 @@
 // require bootstrap-datepicker
 // require turbolinks
 // require_tree .
+//= require analytics
+//= require google_analytics
 
 $(document).ready(function() {
     toastr.options = {
