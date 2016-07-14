@@ -28,8 +28,7 @@
 // require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 // require bootstrap-datepicker
 // require turbolinks
-// require_tree .
-//= require analytics
+//= require_tree .
 //= require google_analytics
 
 $(document).ready(function() {
