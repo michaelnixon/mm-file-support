@@ -23,9 +23,8 @@
           <p class="p-gray"><b>Track Browser</b></p>
           <span class="padded-span">Track owned by <%= mail_to(@data_track.owner.email, @data_track.owner.display_name,class:"underlined") %></span>
           <div class="pull-right">
-            <span class="padded-span"><%= link_to link_html("download-alt", "Download this track"), 
-            @data_track.asset.file.url(:original, false)%></span>
-            <span class="padded-span"><%= link_to link_html("picture", "View in Mova"), mova_url + "take_id=#{@data_track.take.id}&track_id=#{@data_track.id}"%></span>
+            <span class="padded-span"><%= link_to link_html("download-alt", "Download this track"), @data_track.asset.file.url(:original, false),:id => 'track-download' %></span>
+            <span class="padded-span"><%= link_to link_html("picture", "View in Mova"), mova_url + "take_id=#{@data_track.take.id}&track_id=#{@data_track.id}",target: "_blank"%></span>
           </div>
         </div>
         <div class="col-lg-12 border-bottom-mg-bt-top">
@@ -141,7 +140,16 @@
   </div>
 </div>
 
+<% content_for :javascript do %>
 
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#track-download').click(function(event){
+          _gaq.push(['_trackEvent','Download','Track Download','/tracks/',,false])
+        });
+      });
+    </script>
+<% end %>
 
 
 
