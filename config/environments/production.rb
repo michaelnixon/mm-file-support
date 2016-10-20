@@ -89,6 +89,7 @@ FileSupportMovingstories::Application.configure do
   config.action_mailer.default_url_options = { :host => "http://moda.movingstories.ca" }
   Paperclip.options[:content_type_mappings] = {
     :c3d => "application/octet-stream",
-    :bvh => "text/plain"
+    :bvh => "text/plain",
+    :fbx => "application/octet-stream"
   }  
 end

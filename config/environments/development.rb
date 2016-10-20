@@ -33,7 +33,8 @@ FileSupportMovingstories::Application.configure do
   config.action_mailer.default_url_options = { :host => "http://mnm-db.movingstories.ca" }
   Paperclip.options[:content_type_mappings] = {
     :c3d => "application/octet-stream",
-    :bvh => "text/plain"
+    :bvh => "text/plain",
+    :fbx => "application/octet-stream"
   }  
 
   config.after_initialize do
